@@ -57,17 +57,27 @@
     <Component class="javax.swing.JRadioButton" name="radio_Planos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Archivos Planos"/>
+        <Property name="actionCommand" type="java.lang.String" value="c"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radio_XML">
       <Properties>
         <Property name="text" type="java.lang.String" value="Archivos XML"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radio_BD">
       <Properties>
         <Property name="text" type="java.lang.String" value="Base de datos"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

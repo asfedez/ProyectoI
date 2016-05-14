@@ -12,26 +12,19 @@ import controlador.Controlador_FRM_Inicio;
  * @author Casa
  */
 public class FRM_Inicio extends javax.swing.JFrame {
-
-    Controlador_FRM_Inicio controlador_FRM_Inicio;
     
+    public FRM_MenuPrincipal ventanaPrincipal = new FRM_MenuPrincipal();
+    Controlador_FRM_Inicio controlador_FRM_Inicio;
+    public String opcion;
     public FRM_Inicio() {
         initComponents();
         controlador_FRM_Inicio = new Controlador_FRM_Inicio(this);
         this.panel_Inicio1.agregarEventos(controlador_FRM_Inicio);//se agrega el controlador al metodo
-        System.out.println(devolverOpcionSeleccionada());
-    }
-
+        System.out.println(opcion);
  
-    //metodo que devuelve al controlador la opcion seleccionada
-    public String devolverOpcionSeleccionada()
-    {
-        return this.panel_Inicio1.devolverOpcionSeleccionada();
+        
+       
     }
-    
-    
-    
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,13 +40,11 @@ public class FRM_Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panel_Inicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panel_Inicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_Inicio1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel_Inicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -95,6 +86,6 @@ public class FRM_Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private vista.Panel_Inicio panel_Inicio1;
+    public vista.Panel_Inicio panel_Inicio1;
     // End of variables declaration//GEN-END:variables
 }
