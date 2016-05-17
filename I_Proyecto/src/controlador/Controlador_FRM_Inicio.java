@@ -33,26 +33,28 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
     
     public void itemStateChanged(ItemEvent e)
     {
+       
        if(e.getItem()==frm_Inicio.panel_Inicio1.radio_Planos)
        {
+           
            if(e.getStateChange()==1)
            {
-               frm_Inicio.ventanaPrincipal.setVisible(true);
-               frm_Inicio.opcion="Planos";
+               frm_Inicio.setOpcion("Planos");
            }
+           
        }
        if(e.getItem()==frm_Inicio.panel_Inicio1.radio_XML)
        {
            if(e.getStateChange()==1)
            {
-               opcionSeleccionada="XML";
+               frm_Inicio.setOpcion("XML");
            }
        }
        if(e.getItem()==frm_Inicio.panel_Inicio1.radio_BD)
        {
            if(e.getStateChange()==1)
            {
-               opcionSeleccionada="BD";
+               frm_Inicio.setOpcion("BD");
            }
        }
        
