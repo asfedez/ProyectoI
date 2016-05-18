@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JOptionPane;
 import vista.FRM_Inicio;
+import vista.FRM_MenuPrincipal;
 
 /**
  *
@@ -19,7 +20,7 @@ import vista.FRM_Inicio;
 public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
     
     FRM_Inicio frm_Inicio;
-    public String opcionSeleccionada="0";
+    FRM_MenuPrincipal frm_MenuPrincipal;
     public Controlador_FRM_Inicio(FRM_Inicio frm_Inicio) 
     {
         this.frm_Inicio=frm_Inicio;
@@ -33,13 +34,13 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
     
     public void itemStateChanged(ItemEvent e)
     {
-       
        if(e.getItem()==frm_Inicio.panel_Inicio1.radio_Planos)
        {
            
            if(e.getStateChange()==1)
            {
                frm_Inicio.setOpcion("Planos");
+               frm_Inicio.ventanaPrincipal.setVisible(true);
            }
            
        }
@@ -60,12 +61,5 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
        
     }
    
-    public String devolverOpcionSeleccionada()
-    {
-        return opcionSeleccionada;
-    }
-    
-    
 
-    
 }

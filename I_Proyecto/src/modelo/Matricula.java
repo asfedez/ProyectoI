@@ -12,12 +12,12 @@ package modelo;
 public class Matricula 
 {
     private String codigo;
-    private String siglas;
+    private String sigla;
     private String cedula;
 
     public Matricula(String codigo, String siglas, String cedula) {
         this.codigo = codigo;
-        this.siglas = siglas;
+        this.sigla = sigla;
         this.cedula = cedula;
     }
 
@@ -38,15 +38,15 @@ public class Matricula
     /**
      * @return the siglas
      */
-    public String getSiglas() {
-        return siglas;
+    public String getSigla() {
+        return sigla;
     }
 
     /**
      * @param siglas the siglas to set
      */
-    public void setSiglas(String siglas) {
-        this.siglas = siglas;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 
     /**

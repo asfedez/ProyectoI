@@ -2,14 +2,14 @@
 package modelo;
 
 
-public class Persona 
+public class Estudiante 
 {
-    private String cedula;
+    private String carne;
     private String nombre;
     private String direccion;
 
-    public Persona(String cedula, String nombre, String direccion) {
-        this.cedula = cedula;
+    public Estudiante(String carne, String nombre, String direccion) {
+        this.carne = carne;
         this.nombre = nombre;
         this.direccion = direccion;
     }
@@ -17,15 +17,15 @@ public class Persona
     /**
      * @return the cedula
      */
-    public String getCedula() {
-        return cedula;
+    public String getCarne() {
+        return carne;
     }
 
     /**
      * @param cedula the cedula to set
      */
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setCarne(String carne) {
+        this.carne = carne;
     }
 
     /**

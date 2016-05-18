@@ -7,6 +7,7 @@ package vista;
 
 import controlador.Controlador_FRM_Inicio;
 import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -15,10 +16,11 @@ import javax.swing.ButtonModel;
  */
 public class Panel_Inicio extends javax.swing.JPanel {
 
+
     public Panel_Inicio() {
         initComponents();     
        agregarAGrupoBotones();
-           
+       
     }
     
     //Evento para agregar los radio botones al grupo de botones
@@ -39,8 +41,6 @@ public class Panel_Inicio extends javax.swing.JPanel {
         this.radio_BD.addActionListener(controlador_FRM_Inicio);
     }
 
- 
-    
     
     
     @SuppressWarnings("unchecked")
