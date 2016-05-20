@@ -24,10 +24,11 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txtDireccion" max="32767" attributes="0"/>
-                  <Component id="txtNombre" max="32767" attributes="0"/>
-                  <Component id="txtCarne" min="-2" pref="116" max="-2" attributes="0"/>
+                  <Component id="txtCarne" pref="155" max="32767" attributes="0"/>
+                  <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
