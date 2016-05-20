@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import vista.FRM_Matricula;
+//import vista.FRM_Matricula;
 
 /**
  *
@@ -25,16 +25,12 @@ public class ConexionBD {
     String arregloInformacionConsultadaMatriculaDetalle[] = new String[4];
     String arregloInformacionConsultadaUsuarios[] = new String[5];
 
-    FRM_Matricula frm_Matricula;
+    //FRM_Matricula frm_Matricula;
 
     public ConexionBD() {
         realizarConexion();
     }
 
-    public ConexionBD(FRM_Matricula frm_Matricula) {
-        this.frm_Matricula = frm_Matricula;
-        realizarConexion();
-    }
 
     public void realizarConexion() {
         try {
@@ -359,7 +355,7 @@ public class ConexionBD {
                 arregloInformacionConsultadaMatriculaDetalle[1] = rs.getString("cedula");
                 arregloInformacionConsultadaMatriculaDetalle[2] = devolverNombre(arregloInformacionConsultadaMatriculaDetalle[1]);
                 arregloInformacionConsultadaMatriculaDetalle[3] = rs.getString("sigla");
-                frm_Matricula.agregarInformacionTabla(arregloInformacionConsultadaMatriculaDetalle);
+                //frm_Matricula.agregarInformacionTabla(arregloInformacionConsultadaMatriculaDetalle);
                 ejecuto = true;
             }
             rs.close();
