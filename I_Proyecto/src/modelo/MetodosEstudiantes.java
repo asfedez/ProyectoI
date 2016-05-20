@@ -19,13 +19,13 @@ public class MetodosEstudiantes
         listaDeEstudiantes.add(estudiante);
     }
     
-    public boolean consultarEstudiante(String arreglo[])
+    public boolean consultarEstudiante(String cedula)
     {
         boolean encontrado = false;
         
         for (int i = 0; i < listaDeEstudiantes.size(); i++) 
         {
-            if(listaDeEstudiantes.get(i).getCarne().equalsIgnoreCase(arreglo[0]))
+            if(listaDeEstudiantes.get(i).getCarne().equalsIgnoreCase(cedula))
             {
                 encontrado=true;
                 arregloInformacionConsultada[0]=listaDeEstudiantes.get(i).getCarne();

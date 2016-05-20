@@ -14,11 +14,13 @@ public class Matricula
     private String codigo;
     private String sigla;
     private String cedula;
+    private boolean estado;
 
-    public Matricula(String codigo, String siglas, String cedula) {
+    public Matricula(String codigo, String siglas, String cedula, boolean estado) {
         this.codigo = codigo;
-        this.sigla = sigla;
+        this.sigla = siglas;
         this.cedula = cedula;
+        this.estado=estado;
     }
 
     /**
@@ -61,6 +63,20 @@ public class Matricula
      */
     public void setCedula(String cedula) {
         this.cedula = cedula;
+    }
+
+    /**
+     * @return the estado
+     */
+    public boolean getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
     
     
