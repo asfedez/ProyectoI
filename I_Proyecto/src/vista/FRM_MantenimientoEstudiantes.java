@@ -8,6 +8,28 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
         initComponents();
     }
 
+    public  String[] devolverInformacionIngresada()
+    {
+        return this.panel_InformacionEstudiantes1.devolverInformacionIngresada();
+    }
+    public void mostrarInformacion(String arreglo[])
+    {
+        this.panel_InformacionEstudiantes1.mostrarInformacion(arreglo);
+    }
+    
+    public void inicializarGUI()
+    {
+        panel_Botones1.inicializarGUI();
+        panel_InformacionEstudiantes1.inicializarGUI();
+    }
+    
+    public void habilitarAgregar()
+    {
+        panel_InformacionEstudiantes1.habilitarEdicion();
+        
+    }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.

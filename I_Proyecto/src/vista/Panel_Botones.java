@@ -16,6 +16,28 @@ public class Panel_Botones extends javax.swing.JPanel {
      */
     public Panel_Botones() {
         initComponents();
+        inicializarGUI();
+    }
+    
+    public void inicializarGUI()
+    {
+       btnConsultar.setEnabled(true);
+       btnAgregar.setEnabled(false);
+       btnModificar.setEnabled(false);
+       btnEliminar.setEnabled(false);
+    }
+    
+    public void habilitarAgregar()
+    {
+        btnAgregar.setEnabled(true);
+    }
+    
+    public void habilitarEdicion()
+    {
+       btnConsultar.setEnabled(false);
+       btnAgregar.setEnabled(false);
+       btnModificar.setEnabled(true);
+       btnEliminar.setEnabled(true);
     }
 
     /**
@@ -27,47 +49,47 @@ public class Panel_Botones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
-        jButton1.setText("Consultar");
+        btnConsultar.setText("Consultar");
 
-        jButton2.setText("Agregar");
+        btnAgregar.setText("Agregar");
 
-        jButton3.setText("Modificar");
+        btnModificar.setText("Modificar");
 
-        jButton4.setText("Eliminar");
+        btnEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(btnConsultar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(btnModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4))
+                .addComponent(btnEliminar))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton1)
-                .addComponent(jButton2)
-                .addComponent(jButton3)
-                .addComponent(jButton4))
+                .addComponent(btnConsultar)
+                .addComponent(btnAgregar)
+                .addComponent(btnModificar)
+                .addComponent(btnEliminar))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     // End of variables declaration//GEN-END:variables
 }

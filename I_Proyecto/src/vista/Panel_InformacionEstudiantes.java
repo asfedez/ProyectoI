@@ -14,8 +14,41 @@ public class Panel_InformacionEstudiantes extends javax.swing.JPanel {
     /**
      * Creates new form Panel_InformacionEstudiantes
      */
+    String arregloInformacionIngresada[]= new String[3];
     public Panel_InformacionEstudiantes() {
         initComponents();
+        inicializarGUI();
+    }
+    
+    public void inicializarGUI()
+    {
+        txtCarne.setEnabled(true);
+        txtCarne.setText("");
+        txtNombre.setEnabled(false);
+        txtNombre.setText("");
+        txtDireccion.setEnabled(false);
+        txtDireccion.setText("");
+    }
+    public void habilitarEdicion()
+    {
+        txtCarne.setEnabled(false);
+        txtNombre.setEnabled(true);
+        txtDireccion.setEnabled(true);
+    }
+    
+    public String[] devolverInformacionIngresada()
+    {
+        arregloInformacionIngresada[0]=txtCarne.getText();
+        arregloInformacionIngresada[1]=txtNombre.getText();
+        arregloInformacionIngresada[2]=txtDireccion.getText();
+        return arregloInformacionIngresada;
+    }
+    
+    public void mostrarInformacion(String arreglo[])
+    {
+        txtCarne.setText(arreglo[0]);
+        txtNombre.setText(arreglo[1]);
+        txtDireccion.setText(arreglo[2]);
     }
 
     /**
