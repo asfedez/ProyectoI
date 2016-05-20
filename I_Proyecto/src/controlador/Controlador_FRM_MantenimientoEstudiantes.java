@@ -47,7 +47,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener
     }
     public void consultar()
     {
-        if(metodosEstudiantes.consultarEstudiante(frm_MantenimientoEstudiantes.devolverInformacionIngresada()))
+        if(metodosEstudiantes.consultarEstudiante(frm_MantenimientoEstudiantes.devolverInformacionIngresada()[0]))
         {
             frm_MantenimientoEstudiantes.mostrarInformacion(metodosEstudiantes.devolverInformacionConsultada());
         }

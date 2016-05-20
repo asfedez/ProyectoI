@@ -13,7 +13,7 @@ public class MetodosMatricula {
 
     boolean estado;
     
-    public MetodosMatricula(MetodosEstudiantes metodosEstudiantes,MetodosCursos metodosCursos, /*FRM_MantenimientoMatricula frm_MantenimientoMatricula*/)
+    public MetodosMatricula(MetodosEstudiantes metodosEstudiantes,MetodosCursos metodosCursos)
     {
         arrayMatricula=new ArrayList <Matricula>();
         this.metodosCursos=metodosCursos;
