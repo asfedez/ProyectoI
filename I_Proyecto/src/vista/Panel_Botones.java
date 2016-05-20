@@ -54,12 +54,16 @@ public class Panel_Botones extends javax.swing.JPanel {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
+        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1463802145_magnifyingglass.png"))); // NOI18N
         btnConsultar.setText("Consultar");
 
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1463801280_floppy-disk.png"))); // NOI18N
         btnAgregar.setText("Agregar");
 
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1463801417_compose.png"))); // NOI18N
         btnModificar.setText("Modificar");
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1463801454_ic_delete_48px.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
