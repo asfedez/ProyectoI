@@ -50,7 +50,16 @@ public class FRM_MantenimientoMatricula extends javax.swing.JFrame {
       
      }
      
+    public void habilitarAgregar()
+    {
+        panel_Botones1.habilitarAgregar();
+        
+    }
     
+    public void habilitarEdicion()
+    {
+        
+    }
     
     
     @SuppressWarnings("unchecked")

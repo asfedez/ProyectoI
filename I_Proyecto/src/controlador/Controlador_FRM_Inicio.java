@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -13,10 +9,6 @@ import javax.swing.JOptionPane;
 import vista.FRM_Inicio;
 import vista.FRM_MenuPrincipal;
 
-/**
- *
- * @author Casa
- */
 public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
     
     FRM_Inicio frm_Inicio;
@@ -49,6 +41,7 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
            if(e.getStateChange()==1)
            {
                frm_Inicio.setOpcion("XML");
+               frm_Inicio.ventanaPrincipal.setVisible(true);
            }
        }
        if(e.getItem()==frm_Inicio.panel_Inicio1.radio_BD)
@@ -56,6 +49,7 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
            if(e.getStateChange()==1)
            {
                frm_Inicio.setOpcion("BD");
+               frm_Inicio.ventanaPrincipal.setVisible(true);
            }
        }
        
