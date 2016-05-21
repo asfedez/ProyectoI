@@ -18,6 +18,25 @@ public class Panel_InformacionCursos extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void inicializarGUI()
+    {
+        this.txtSiglas.setEnabled(true);
+        this.txtSiglas.setText("");
+        this.txtNombre.setEnabled(false);
+        this.txtNombre.setText("");
+        this.jcbCreditos.setEnabled(false);
+        this.txtHorario.setEnabled(false);
+        this.txtHorario.setText("");
+    }
+    
+    public void habilitarEdicion()
+    {
+        this.txtSiglas.setEnabled(false);
+        this.txtNombre.setEnabled(true);
+        this.jcbCreditos.setEnabled(true);
+        this.txtHorario.setEnabled(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

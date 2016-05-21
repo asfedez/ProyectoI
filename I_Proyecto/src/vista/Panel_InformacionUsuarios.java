@@ -19,6 +19,32 @@ public class Panel_InformacionUsuarios extends javax.swing.JPanel {
         
     }
     
+     public void inicializarGUI()
+    {
+        this.txtCedula.setEnabled(true);
+        this.txtCedula.setText("");
+        this.txtNombreCompleto.setEnabled(false);
+        this.txtNombreCompleto.setText("");
+        this.txtNombreUsuario.setEnabled(false);
+        this.txtNombreUsuario.setText("");
+        this.txtContrasenna.setEnabled(false);
+        this.txtContrasenna.setText("");
+        this.txtConfirmarContrasenna.setEnabled(false);
+        this.txtConfirmarContrasenna.setText("");
+        this.jcbTipo.setEnabled(false);
+                
+    }
+    
+    public void habilitarEdicion()
+    {
+        this.txtCedula.setEnabled(false);
+        this.txtNombreCompleto.setEnabled(true);
+        this.txtNombreUsuario.setEnabled(true);
+        this.txtContrasenna.setEnabled(true);
+        this.txtConfirmarContrasenna.setEnabled(true);
+        this.jcbTipo.setEnabled(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

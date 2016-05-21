@@ -11,13 +11,20 @@ package vista;
  */
 public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FRM_MantenimientoUsuarios
-     */
+    Panel_InformacionUsuarios panel_InformacionUsuarios;
     public FRM_MantenimientoUsuarios() {
         initComponents();
+        panel_InformacionUsuarios= new Panel_InformacionUsuarios();
     }
-
+     public void inicializarGUI()
+    {
+        panel_InformacionUsuarios.inicializarGUI();
+    }
+    
+    public void habilitarEdicion()
+    {
+        panel_InformacionUsuarios.habilitarEdicion();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
