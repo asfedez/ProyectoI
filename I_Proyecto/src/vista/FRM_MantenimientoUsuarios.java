@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Casa
@@ -19,6 +21,18 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     {
         this.panel_InformacionUsuarios1.inicializarGUI();
         this.panel_Botones1.inicializarGUI();
+    }
+      public  String[] devolverInformacionIngresada()
+    {
+        return this.panel_InformacionUsuarios1.devolverInformacionIngresada();
+    }
+       public void mostrarInformacion(String arreglo[])
+    {
+        this.panel_InformacionUsuarios1.mostrarInformacion(arreglo);
+    }
+       public void mostrarMensaje(String mensaje)
+    {
+        JOptionPane.showMessageDialog(null,mensaje);
     }
     
     public void habilitarAgregar()

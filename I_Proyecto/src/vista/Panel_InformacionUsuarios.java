@@ -4,7 +4,8 @@ package vista;
 
 public class Panel_InformacionUsuarios extends javax.swing.JPanel {
 
-   
+    String arregloInformacionIngresada[]= new String[6];
+
     public Panel_InformacionUsuarios() {
         initComponents();
         cargarItems();
@@ -16,6 +17,25 @@ public class Panel_InformacionUsuarios extends javax.swing.JPanel {
         jcbTipo.removeAllItems();
         jcbTipo.addItem("Administrador");
         jcbTipo.addItem("Usuario");
+        
+    }
+     public String[] devolverInformacionIngresada()
+    {
+        arregloInformacionIngresada[0]=txtCedula.getText();
+        arregloInformacionIngresada[1]=txtNombreCompleto.getText();
+        arregloInformacionIngresada[2]=txtNombreUsuario.getText();
+        arregloInformacionIngresada[3]=txtContrasenna.getText();
+        arregloInformacionIngresada[4]=txtConfirmarContrasenna.getText();
+        arregloInformacionIngresada[5]=""+jcbTipo.getSelectedIndex();
+        
+        return arregloInformacionIngresada;
+    }
+      public void mostrarInformacion(String arreglo[])
+    {
+        this.txtNombreCompleto.setText(arreglo[1]);
+        this.txtNombreUsuario.setText(arreglo[2]);
+        this.txtContrasenna.setText(arreglo[3]);
+        this.jcbTipo.setSelectedIndex(Integer.parseInt(arreglo[4]));
         
     }
     

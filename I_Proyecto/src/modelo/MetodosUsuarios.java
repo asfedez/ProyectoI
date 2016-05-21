@@ -42,6 +42,10 @@ public class MetodosUsuarios {
         return existe;
     
     }
+     public String[] devolverInformacionConsultada()
+    {
+        return arregloInformacionConsultada;
+    }
     public void modificarUsuario(String arreglo[])
     {
         for(int contador=0;contador<listaDeUsuarios.size();contador++)
