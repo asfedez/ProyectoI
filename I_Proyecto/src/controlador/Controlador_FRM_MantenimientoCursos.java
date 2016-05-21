@@ -73,19 +73,19 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener
             {
                 metodosCursos.modificarCurso(frm_MantenimientoCursos.devolverInformacionIngresada());
                 frm_MantenimientoCursos.inicializarGUI();
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante modificado correctamente en archivos planos");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso modificado correctamente en archivos planos");
             }
             if(opcion.equalsIgnoreCase("BD"))
             {
                 conexionBD.modificarCurso(frm_MantenimientoCursos.devolverInformacionIngresada());
                 frm_MantenimientoCursos.inicializarGUI();
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante modificado correctamente en la base de datos");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso modificado correctamente en la base de datos");
             }
             if(opcion.equalsIgnoreCase("XML"))
             {
                 archivoXMLCursos.modificarInformacionDelXml(frm_MantenimientoCursos.devolverInformacionIngresada());
                 frm_MantenimientoCursos.inicializarGUI();
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante modificado correctamente en archivos XML");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso modificado correctamente en archivos XML");
             }
         }
         if(evento.getActionCommand().equals("Eliminar"))
@@ -94,7 +94,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener
             {
                 metodosCursos.eliminarCurso(frm_MantenimientoCursos.devolverInformacionIngresada());
                 frm_MantenimientoCursos.inicializarGUI();
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante eliminado de archivos planos");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso eliminado de archivos planos");
                 
             }
             
@@ -102,13 +102,13 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener
             {
                 conexionBD.eliminarCurso(frm_MantenimientoCursos.devolverInformacionIngresada()[0]);
                 frm_MantenimientoCursos.inicializarGUI();
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante eliminado de la base de datos");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso eliminado de la base de datos");
             }
             if(opcion.equalsIgnoreCase("XML"))
             {
                 archivoXMLCursos.eliminarInformacionDelXml(frm_MantenimientoCursos.devolverInformacionIngresada()[0]);
                 frm_MantenimientoCursos.inicializarGUI();
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante eliminado de archivos XML");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso eliminado de archivos XML");
             }
         }
     
@@ -124,7 +124,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener
             }
             else
             {
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante no encontrado en archivos planos");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso no encontrado en archivos planos");
                 frm_MantenimientoCursos.habilitarAgregar();
             } 
         }
@@ -137,7 +137,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener
             }
             else
             {
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Estudiante no encontrado en la base de datos");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos, "Curso no encontrado en la base de datos");
                 frm_MantenimientoCursos.habilitarAgregar();
             }
         }
@@ -150,7 +150,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener
             }
             else
             {
-                JOptionPane.showMessageDialog(frm_MantenimientoCursos,"Estudiante no encontrado en archivos XML");
+                JOptionPane.showMessageDialog(frm_MantenimientoCursos,"Curso no encontrado en archivos XML");
                 frm_MantenimientoCursos.habilitarAgregar();
             } 
         }
