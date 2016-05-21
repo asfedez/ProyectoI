@@ -7,6 +7,7 @@ package vista;
 
 import controlador.Controlador_FRM_MantenimientoCursos;
 import controlador.Controlador_FRM_MantenimientoEstudiantes;
+import controlador.Controlador_FRM_MantenimientoMatricula;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Panel_Botones extends javax.swing.JPanel {
     public Panel_Botones() {
         initComponents();
         inicializarGUI();
+        
     }
     
     public void inicializarGUI()
@@ -44,13 +46,28 @@ public class Panel_Botones extends javax.swing.JPanel {
        btnEliminar.setEnabled(true);
     }
 
-    public void agregarEventos(Controlador_FRM_MantenimientoEstudiantes controlador_FRM_MantenimientoEstudiantes)
+    public void agregarEventosEstudiantes(Controlador_FRM_MantenimientoEstudiantes controlador_FRM_MantenimientoEstudiantes)
     {
         btnConsultar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
         btnAgregar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
         btnModificar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
         btnEliminar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
     }
+    public void agregarEventosCursos(Controlador_FRM_MantenimientoCursos controlador_FRM_MantenimientoCursos)
+    {
+        btnConsultar.addActionListener(controlador_FRM_MantenimientoCursos);
+        btnAgregar.addActionListener(controlador_FRM_MantenimientoCursos);
+        btnModificar.addActionListener(controlador_FRM_MantenimientoCursos);
+        btnEliminar.addActionListener(controlador_FRM_MantenimientoCursos);
+    }
+    public void agregarEventosMatricula(Controlador_FRM_MantenimientoMatricula controlador_FRM_MantenimientoMatricula)
+    {
+        btnConsultar.addActionListener(controlador_FRM_MantenimientoMatricula);
+        btnAgregar.addActionListener(controlador_FRM_MantenimientoMatricula);
+        btnModificar.addActionListener(controlador_FRM_MantenimientoMatricula);
+        btnEliminar.addActionListener(controlador_FRM_MantenimientoMatricula);
+    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

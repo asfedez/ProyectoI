@@ -5,6 +5,9 @@
  */
 package vista;
 
+import controlador.Controlador_FRM_MantenimientoCursos;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -12,16 +15,33 @@ package vista;
 public class FRM_MantenimientoCursos extends javax.swing.JFrame {
 
    
-    
+    Controlador_FRM_MantenimientoCursos controlador;
     public FRM_MantenimientoCursos() {
         initComponents();
         inicializarGUI();
-    }
+        controlador = new Controlador_FRM_MantenimientoCursos(this);
+        panel_Botones1.agregarEventosCursos(controlador);
 
+    }
+    
+
+     public  String[] devolverInformacionIngresada()
+    {
+        return this.panel_InformacionCursos1.devolverInformacionIngresada();
+    }
+     public void mostrarInformacion(String arreglo[])
+    {
+        this.panel_InformacionCursos1.mostrarInformacion(arreglo);
+    }
+    public void mostrarMensaje(String mensaje)
+    {
+        JOptionPane.showMessageDialog(null,mensaje);
+    }
     public void inicializarGUI()
     {
         this.panel_InformacionCursos1.inicializarGUI();
         this.panel_Botones1.inicializarGUI();
+        this.panel_InformacionCursos1.llenarJCB();
     }
     
     public void habilitarAgregar()
@@ -43,8 +63,6 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
 
         panel_InformacionCursos1 = new vista.Panel_InformacionCursos();
         panel_Botones1 = new vista.Panel_Botones();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

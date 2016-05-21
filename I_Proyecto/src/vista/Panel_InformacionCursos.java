@@ -14,8 +14,10 @@ public class Panel_InformacionCursos extends javax.swing.JPanel {
     /**
      * Creates new form Panel_Cursos
      */
+    String arregloInformacionIngresada[]= new String[4];
     public Panel_InformacionCursos() {
         initComponents();
+        llenarJCB();
     }
 
     public void inicializarGUI()
@@ -37,9 +39,48 @@ public class Panel_InformacionCursos extends javax.swing.JPanel {
         this.txtHorario.setEnabled(true);
     }
     
+     public String[] devolverInformacion()
+    {
+        String informacion[]=new String[4];
+        informacion[0]=this.txtSiglas.getText();
+        informacion[1]=this.txtNombre.getText();
+        informacion[2]=""+this.jcbCreditos.getSelectedIndex();
+        informacion[3]=this.txtHorario.getText();
+        
+        return informacion;
+    }
+    
+     public void mostrarInformacion(String arreglo[])
+    {
+        this.txtNombre.setText(arreglo[1]);
+        this.jcbCreditos.setSelectedIndex(Integer.parseInt(arreglo[2]));
+        this.txtHorario.setText(arreglo[3]);
+        
+    }
+      public String[] devolverInformacionIngresada()
+    {
+        arregloInformacionIngresada[0]=txtSiglas.getText();
+        arregloInformacionIngresada[1]=txtNombre.getText();
+        arregloInformacionIngresada[2]=""+jcbCreditos.getSelectedIndex();
+        arregloInformacionIngresada[3]=txtHorario.getText();
+        
+        return arregloInformacionIngresada;
+    }
+      public String devolverSigla()
+    {
+        return this.txtSiglas.getText();
+    }
     public void llenarJCB()
     {
+        int contador;
+        this.jcbCreditos.removeAllItems();
         
+        for(contador=0;contador<=50;contador++)
+        {
+            this.jcbCreditos.addItem(""+contador);
+            
+        }
+        this.jcbCreditos.setSelectedIndex(4);
     }
     
     /**
