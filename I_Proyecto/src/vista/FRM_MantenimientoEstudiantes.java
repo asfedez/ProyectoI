@@ -1,11 +1,15 @@
 
 package vista;
 
+import controlador.Controlador_FRM_MantenimientoEstudiantes;
+
 public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
 
-    
+    Controlador_FRM_MantenimientoEstudiantes controlador_FRM_MantenimientoEstudiantes;
     public FRM_MantenimientoEstudiantes() {
         initComponents();
+        controlador_FRM_MantenimientoEstudiantes= new Controlador_FRM_MantenimientoEstudiantes(this);
+        panel_Botones1.agregarEventos(controlador_FRM_MantenimientoEstudiantes);
     }
 
     public  String[] devolverInformacionIngresada()

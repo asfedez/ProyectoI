@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 import controlador.Controlador_FRM_Inicio;
 
-/**
- *
- * @author Casa
- */
+
 public class FRM_Inicio extends javax.swing.JFrame {
     
-    public FRM_MenuPrincipal ventanaPrincipal = new FRM_MenuPrincipal();
+    //public FRM_MenuPrincipal ventanaPrincipal = new FRM_MenuPrincipal();
     Controlador_FRM_Inicio controlador_FRM_Inicio;
     public String opcion;
     public FRM_Inicio() {
@@ -29,6 +22,10 @@ public class FRM_Inicio extends javax.swing.JFrame {
         System.out.println("opcion: "+opcion);
     }
     
+    public String getOpcion()
+    {
+        return this.opcion;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

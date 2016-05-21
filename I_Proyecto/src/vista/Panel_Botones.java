@@ -5,6 +5,9 @@
  */
 package vista;
 
+import controlador.Controlador_FRM_MantenimientoCursos;
+import controlador.Controlador_FRM_MantenimientoEstudiantes;
+
 /**
  *
  * @author Casa
@@ -41,6 +44,13 @@ public class Panel_Botones extends javax.swing.JPanel {
        btnEliminar.setEnabled(true);
     }
 
+    public void agregarEventos(Controlador_FRM_MantenimientoEstudiantes controlador_FRM_MantenimientoEstudiantes)
+    {
+        btnConsultar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
+        btnAgregar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
+        btnModificar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
+        btnEliminar.addActionListener(controlador_FRM_MantenimientoEstudiantes);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

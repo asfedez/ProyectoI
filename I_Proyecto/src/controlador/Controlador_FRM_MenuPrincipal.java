@@ -17,6 +17,7 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
     public FRM_MantenimientoMatricula frm_MantenimientoMatricula;
     public FRM_MantenimientoUsuarios frm_MantenimientoUsuarios;
     
+    String opcion;
 
     public Controlador_FRM_MenuPrincipal(FRM_MenuPrincipal frm_MenuPrincipal) 
     {
@@ -28,6 +29,10 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
         
     }
     
+    public void setOpcion(String opcion)
+    {
+        this.opcion=opcion;
+    }
     
     public void actionPerformed(ActionEvent evento)
     {

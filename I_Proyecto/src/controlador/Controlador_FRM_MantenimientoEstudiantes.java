@@ -54,6 +54,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener
         else
         {
             JOptionPane.showMessageDialog(frm_MantenimientoEstudiantes, "Estudiante no encontrado");
+            frm_MantenimientoEstudiantes.habilitarAgregar();
         }
     }
 }
