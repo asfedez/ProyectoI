@@ -13,13 +13,12 @@ public class FRM_Inicio extends javax.swing.JFrame {
         initComponents();
         controlador_FRM_Inicio = new Controlador_FRM_Inicio(this);
         this.panel_Inicio1.agregarEventos(controlador_FRM_Inicio);//se agrega el controlador al metodo
-               
+    
     }
     //Metodo para establecer la opcion seleccionada en la variable
     public void setOpcion(String opcion)
     {
         this.opcion=opcion;
-        System.out.println("opcion: "+opcion);
     }
     
     public String getOpcion()

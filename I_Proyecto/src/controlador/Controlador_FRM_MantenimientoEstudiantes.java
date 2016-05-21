@@ -19,11 +19,16 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener
 {
     MetodosEstudiantes metodosEstudiantes;
     FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes;
-    
+    String opcion;
     public Controlador_FRM_MantenimientoEstudiantes(FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes) 
     {
         this.frm_MantenimientoEstudiantes=frm_MantenimientoEstudiantes;
         metodosEstudiantes=new MetodosEstudiantes();
+    }
+    
+    public void setOpcion(String opcion)
+    {
+        this.opcion=opcion;
     }
     
     public void actionPerformed(ActionEvent evento)
@@ -47,14 +52,26 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener
     }
     public void consultar()
     {
-        if(metodosEstudiantes.consultarEstudiante(frm_MantenimientoEstudiantes.devolverInformacionIngresada()[0]))
+        if(opcion.equalsIgnoreCase("Planos"))
         {
-            frm_MantenimientoEstudiantes.mostrarInformacion(metodosEstudiantes.devolverInformacionConsultada());
+            if(metodosEstudiantes.consultarEstudiante(frm_MantenimientoEstudiantes.devolverInformacionIngresada()[0]))
+            {
+                frm_MantenimientoEstudiantes.mostrarInformacion(metodosEstudiantes.devolverInformacionConsultada());
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(frm_MantenimientoEstudiantes, "Estudiante no encontrado");
+                frm_MantenimientoEstudiantes.habilitarAgregar();
+            } 
         }
         else
         {
-            JOptionPane.showMessageDialog(frm_MantenimientoEstudiantes, "Estudiante no encontrado");
-            frm_MantenimientoEstudiantes.habilitarAgregar();
+            JOptionPane.showMessageDialog(frm_MantenimientoEstudiantes, "otraOpcion");
         }
+          
+      
+     
+  
     }
+    
 }

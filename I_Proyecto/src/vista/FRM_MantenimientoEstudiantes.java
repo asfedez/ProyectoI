@@ -9,9 +9,13 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
     public FRM_MantenimientoEstudiantes() {
         initComponents();
         controlador_FRM_MantenimientoEstudiantes= new Controlador_FRM_MantenimientoEstudiantes(this);
-        panel_Botones1.agregarEventos(controlador_FRM_MantenimientoEstudiantes);
+        panel_Botones1.agregarEventos(controlador_FRM_MantenimientoEstudiantes);   
     }
 
+    public void establecerOpcionAlControlador(String opcion)
+    {
+       controlador_FRM_MantenimientoEstudiantes.setOpcion(opcion);
+    }
     public  String[] devolverInformacionIngresada()
     {
         return this.panel_InformacionEstudiantes1.devolverInformacionIngresada();

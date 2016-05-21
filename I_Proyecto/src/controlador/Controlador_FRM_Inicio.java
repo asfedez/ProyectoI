@@ -20,11 +20,9 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
         this.frm_Inicio=frm_Inicio;
         controlador_FRM_MenuPrincipal= new Controlador_FRM_MenuPrincipal(frm_MenuPrincipal);
     }
+ 
     
-    public void getOpcion()
-    {
-        frm_MenuPrincipal.setOpcion(frm_Inicio.getOpcion());
-    }
+   
     
     public void actionPerformed(ActionEvent e)
     {
@@ -40,6 +38,7 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
            {
                frm_Inicio.setOpcion("Planos");
                frm_MenuPrincipal.setVisible(true);
+               frm_MenuPrincipal.controlador_FRM_MenuPrincipal.setOpcion(frm_Inicio.getOpcion());
            }
            
        }
@@ -49,6 +48,7 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
            {
                frm_Inicio.setOpcion("XML");
               frm_MenuPrincipal.setVisible(true);
+              frm_MenuPrincipal.controlador_FRM_MenuPrincipal.setOpcion(frm_Inicio.getOpcion());
            }
        }
        if(e.getItem()==frm_Inicio.panel_Inicio1.radio_BD)
@@ -57,10 +57,13 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
            {
                frm_Inicio.setOpcion("BD");
                frm_MenuPrincipal.setVisible(true);
+               frm_MenuPrincipal.controlador_FRM_MenuPrincipal.setOpcion(frm_Inicio.getOpcion());
            }
        }
        
     }
+    
+    
    
 
 }

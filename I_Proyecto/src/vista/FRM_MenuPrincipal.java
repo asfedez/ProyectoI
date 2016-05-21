@@ -6,17 +6,16 @@ import controlador.Controlador_FRM_MenuPrincipal;
 
 public class FRM_MenuPrincipal extends javax.swing.JFrame {
 
-    Controlador_FRM_MenuPrincipal controlador_FRM_MenuPrincipal;
+    public Controlador_FRM_MenuPrincipal controlador_FRM_MenuPrincipal;
+    public String opcion="";
     public FRM_MenuPrincipal() {
         initComponents();
         controlador_FRM_MenuPrincipal= new Controlador_FRM_MenuPrincipal(this);
         agregarEventos(controlador_FRM_MenuPrincipal);
     }
-
-    public void setOpcion(String opcion)
-    {
-        controlador_FRM_MenuPrincipal.setOpcion(opcion);
-    }
+    
+    
+  
     
     public void agregarEventos(Controlador_FRM_MenuPrincipal controlador)
     {
