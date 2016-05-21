@@ -43,8 +43,6 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
         panel_Botones1 = new vista.Panel_Botones();
         panel_InformacionEstudiantes1 = new vista.Panel_InformacionEstudiantes();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

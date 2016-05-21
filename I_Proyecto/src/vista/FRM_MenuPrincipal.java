@@ -18,6 +18,11 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     public void agregarEventos(Controlador_FRM_MenuPrincipal controlador)
     {
         this.menuItemEstudiantes.addActionListener(controlador);
+        this.menuItemCursos.addActionListener(controlador);
+        this.menuItemMatricula.addActionListener(controlador);
+        this.menuItemUsuarios.addActionListener(controlador);
+        this.menuItemSalir.addActionListener(controlador);
+        
     }
     
     @SuppressWarnings("unchecked")

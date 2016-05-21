@@ -1,11 +1,10 @@
-
 package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Controlador_FRM_Cursos implements ActionListener
+public class Controlador_FRM_MantenimientoCursos implements ActionListener
 {
     public void actionPerformed(ActionEvent evento)
     {
