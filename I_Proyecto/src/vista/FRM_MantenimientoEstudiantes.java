@@ -57,6 +57,12 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
         panel_Botones1 = new vista.Panel_Botones();
         panel_InformacionEstudiantes1 = new vista.Panel_InformacionEstudiantes();
 
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,6 +84,11 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        if(controlador_FRM_MantenimientoEstudiantes.getOpcion().equals("Planos"))
+            controlador_FRM_MantenimientoEstudiantes.escribirInformacionEnElArchivo();
+    }//GEN-LAST:event_formComponentHidden
 
  
 
