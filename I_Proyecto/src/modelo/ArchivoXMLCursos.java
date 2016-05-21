@@ -25,12 +25,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
-import vista.FRM_Cursos;
+import vista.FRM_MantenimientoCursos;
 
 
 public class ArchivoXMLCursos 
 {
-    FRM_Cursos frm_Cursos;
+    FRM_MantenimientoCursos frm_Cursos;
     DocumentBuilderFactory factory;
     DocumentBuilder builder;
     DOMImplementation implementation;
@@ -40,7 +40,7 @@ public class ArchivoXMLCursos
     Element raiz;
     String arregloInformacion[];
 
-    public ArchivoXMLCursos(FRM_Cursos frm_Cursos) {
+    public ArchivoXMLCursos(FRM_MantenimientoCursos frm_Cursos) {
         this.frm_Cursos=frm_Cursos;
         crearArchivo("Cursos");
         arregloInformacion=new String[3];
