@@ -37,6 +37,11 @@ public class Panel_InformacionCursos extends javax.swing.JPanel {
         this.txtHorario.setEnabled(true);
     }
     
+    public void llenarJCB()
+    {
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

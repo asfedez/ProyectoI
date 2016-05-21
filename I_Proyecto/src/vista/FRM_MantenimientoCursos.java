@@ -12,22 +12,30 @@ package vista;
 public class FRM_MantenimientoCursos extends javax.swing.JFrame {
 
    
-    Panel_InformacionCursos panel_InformacionCursos;
     
     public FRM_MantenimientoCursos() {
         initComponents();
-        panel_InformacionCursos = new Panel_InformacionCursos();
+        inicializarGUI();
     }
 
     public void inicializarGUI()
     {
-        panel_InformacionCursos.inicializarGUI();
+        this.panel_InformacionCursos1.inicializarGUI();
+        this.panel_Botones1.inicializarGUI();
+    }
+    
+    public void habilitarAgregar()
+    {
+        this.panel_InformacionCursos1.habilitarEdicion();
+        this.panel_Botones1.habilitarAgregar();
     }
     
     public void habilitarEdicion()
     {
-        panel_InformacionCursos.habilitarEdicion();
+        this.panel_InformacionCursos1.habilitarEdicion();
+        this.panel_Botones1.habilitarEdicion();
     }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
