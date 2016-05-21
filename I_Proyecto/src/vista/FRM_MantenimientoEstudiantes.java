@@ -26,9 +26,15 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
     public void habilitarAgregar()
     {
         panel_InformacionEstudiantes1.habilitarEdicion();
+        panel_Botones1.habilitarAgregar();
         
     }
     
+    public void habilitarEdicion()
+    {
+        panel_InformacionEstudiantes1.habilitarEdicion();
+        panel_Botones1.habilitarEdicion();
+    }
     
     
     /**

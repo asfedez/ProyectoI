@@ -29,6 +29,7 @@ public class Panel_Botones extends javax.swing.JPanel {
     
     public void habilitarAgregar()
     {
+        btnConsultar.setEnabled(false);
         btnAgregar.setEnabled(true);
     }
     
