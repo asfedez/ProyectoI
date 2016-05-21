@@ -65,4 +65,20 @@ public class MetodosEstudiantes
         }
     }
     
+    //////****Archivos planos***/////
+   public ArrayList<Estudiante> devolverLista()
+   {
+       return listaDeEstudiantes;
+   }
+   
+   public void leerArchivo(ArrayList<Estudiante> lista)
+   {
+       for (int i = 0; i < lista.size(); i++)
+       {
+           listaDeEstudiantes.add(lista.get(i));
+       }
+   }
+    
+    
+    
 }

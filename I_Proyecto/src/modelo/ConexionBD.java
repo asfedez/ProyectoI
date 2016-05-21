@@ -28,7 +28,7 @@ public class ConexionBD {
     //FRM_Matricula frm_Matricula;
 
     public ConexionBD() {
-        realizarConexion();
+       realizarConexion();
     }
 
 
@@ -129,7 +129,7 @@ public class ConexionBD {
         try {
 
             cmd = con.createStatement();
-            ejecuto = cmd.execute("INSERT INTO `estudiantes`(`cedula`, `nombreCompleto`, `direccion`) VALUES ( '" + arreglo[0] + "','" + arreglo[1] + "','" + arreglo[2] + "')");
+            ejecuto = cmd.execute("INSERT INTO `estudiantes`(`cedula`, `nombre`, `direccion`) VALUES ( '" + arreglo[0] + "','" + arreglo[1] + "','" + arreglo[2] + "')");
 
             return true;
             // rs.close();
@@ -149,7 +149,7 @@ public class ConexionBD {
             rs = cmd.executeQuery("SELECT * FROM `estudiantes` WHERE cedula='" + cedula + "'");
             while (rs.next()) {
                 arregloInformacionConsultadaEstudiantes[0] = rs.getString("cedula");
-                arregloInformacionConsultadaEstudiantes[1] = rs.getString("nombreCompleto");
+                arregloInformacionConsultadaEstudiantes[1] = rs.getString("nombre");
                 arregloInformacionConsultadaEstudiantes[2] = rs.getString("direccion");
                 ejecuto = true;
             }
@@ -187,7 +187,7 @@ public class ConexionBD {
         int ejecuto = 99;
         try {
             cmd = con.createStatement();
-            ejecuto = cmd.executeUpdate("UPDATE `estudiantes` SET `nombreCompleto`='" + arreglo[1] + "',`direccion`='" + arreglo[2] + "' WHERE cedula =" + arreglo[0]);
+            ejecuto = cmd.executeUpdate("UPDATE `estudiantes` SET `nombre`='" + arreglo[1] + "',`direccion`='" + arreglo[2] + "' WHERE cedula =" + arreglo[0]);
         } catch (Exception e) {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
 

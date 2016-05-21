@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Casa
  */
-public class Matricula 
+public class Matricula implements Serializable
 {
     private String codigo;
     private String sigla;

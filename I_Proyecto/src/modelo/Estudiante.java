@@ -1,8 +1,10 @@
 
 package modelo;
 
+import java.io.Serializable;
 
-public class Estudiante 
+
+public class Estudiante implements Serializable
 {
     private String carne;
     private String nombre;

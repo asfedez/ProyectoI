@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JOptionPane;
+import modelo.ConexionBD;
 import vista.FRM_Inicio;
 import vista.FRM_MenuPrincipal;
 
@@ -14,8 +15,10 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
     FRM_Inicio frm_Inicio;
     FRM_MenuPrincipal frm_MenuPrincipal;
     Controlador_FRM_MenuPrincipal controlador_FRM_MenuPrincipal;
+    ConexionBD conexionBD;
     public Controlador_FRM_Inicio(FRM_Inicio frm_Inicio) 
     {
+        //conexionBD=new ConexionBD();
         frm_MenuPrincipal=new FRM_MenuPrincipal();
         this.frm_Inicio=frm_Inicio;
         controlador_FRM_MenuPrincipal= new Controlador_FRM_MenuPrincipal(frm_MenuPrincipal);

@@ -5,11 +5,14 @@
  *///cedula, nombreCompleto, nombreUsuario, contrasenna, tipo
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Usuario
  */
-public class Usuario {
+public class Usuario implements Serializable
+{
     
     private String cedula;
     private String nombreCompleto;

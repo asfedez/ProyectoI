@@ -3,6 +3,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.ConexionBD;
 import vista.FRM_MantenimientoCursos;
 import vista.FRM_MantenimientoEstudiantes;
 import vista.FRM_MantenimientoMatricula;
@@ -16,17 +17,18 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
     public FRM_MantenimientoCursos frm_MantenimientoCursos;
     public FRM_MantenimientoMatricula frm_MantenimientoMatricula;
     public FRM_MantenimientoUsuarios frm_MantenimientoUsuarios;
-    
+    ConexionBD conexionBD;
     String opcion;
 
     public Controlador_FRM_MenuPrincipal(FRM_MenuPrincipal frm_MenuPrincipal) 
     {
         this.frm_MenuPrincipal = frm_MenuPrincipal;
-        frm_MantenimientoEstudiantes= new FRM_MantenimientoEstudiantes();
         frm_MantenimientoUsuarios = new FRM_MantenimientoUsuarios();
         frm_MantenimientoMatricula= new FRM_MantenimientoMatricula();
         frm_MantenimientoCursos=new FRM_MantenimientoCursos();
-        
+        frm_MantenimientoEstudiantes= new FRM_MantenimientoEstudiantes();
+        conexionBD=new ConexionBD();
+        conexionBD.realizarConexion();
     }
     
     public void setOpcion(String opcion)
