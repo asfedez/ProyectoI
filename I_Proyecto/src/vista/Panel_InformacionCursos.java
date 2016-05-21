@@ -52,6 +52,7 @@ public class Panel_InformacionCursos extends javax.swing.JPanel {
     
      public void mostrarInformacion(String arreglo[])
     {
+        //this.txtSiglas.setText(arreglo[0]);
         this.txtNombre.setText(arreglo[1]);
         this.jcbCreditos.setSelectedIndex(Integer.parseInt(arreglo[2]));
         this.txtHorario.setText(arreglo[3]);

@@ -46,6 +46,7 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
         if(evento.getActionCommand().equalsIgnoreCase("Cursos"))
         {
             frm_MantenimientoCursos.setVisible(true);
+            frm_MantenimientoCursos.establecerOpcionAlControlador(opcion);
         }
         if(evento.getActionCommand().equalsIgnoreCase("Matricula"))
         {

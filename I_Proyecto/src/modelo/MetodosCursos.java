@@ -20,13 +20,13 @@ public class MetodosCursos {
         listaDeCursos.add(curso);
     }
     
-    public boolean consultarCurso(String arreglo[])
+    public boolean consultarCurso(String sigla)
     {
         boolean encontrado = false;
         
         for (int i = 0; i < listaDeCursos.size(); i++) 
         {
-            if(listaDeCursos.get(i).getSigla().equalsIgnoreCase(arreglo[0]))
+            if(listaDeCursos.get(i).getSigla().equalsIgnoreCase(sigla))
             {
                 encontrado=true;
                 arregloInformacionConsultada[0]=listaDeCursos.get(i).getSigla();
@@ -66,7 +66,32 @@ public class MetodosCursos {
             }
         }
     }
+      ///****Archivos Planos**////
+    public ArrayList<Curso> getInformacionEnCursos()
+    {
+        return listaDeCursos;
+    }
     
+    public void guardarInformacionDeArchivos(ArrayList<Curso> lista)
+    {
+        for (int i = 0; i < lista.size(); i++) {
+            listaDeCursos.add(lista.get(i));
+            
+        }
+    }
+    
+     public ArrayList<Curso> devolverLista()
+   {
+       return listaDeCursos;
+   }
+   
+   public void leerArchivo(ArrayList<Curso> lista)
+   {
+       for (int i = 0; i < lista.size(); i++)
+       {
+           listaDeCursos.add(lista.get(i));
+       }
+   }
 }
     
 
