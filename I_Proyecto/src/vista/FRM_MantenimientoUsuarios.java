@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.Controlador_FRM_MantenimientoUsuarios;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,9 +14,16 @@ import javax.swing.JOptionPane;
  */
 public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
 
+    Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios;
     public FRM_MantenimientoUsuarios() {
         initComponents();
         inicializarGUI();
+        controlador_FRM_MantenimientoUsuarios= new Controlador_FRM_MantenimientoUsuarios(this);
+        panel_Botones1.agregarEventosUsuario(controlador_FRM_MantenimientoUsuarios);
+    }
+    public void establecerOpcionAlControlador(String opcion)
+    {
+        controlador_FRM_MantenimientoUsuarios.setOpcion(opcion);
     }
      public void inicializarGUI()
     {
@@ -59,6 +67,12 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
         panel_Botones1 = new vista.Panel_Botones();
         panel_InformacionUsuarios1 = new vista.Panel_InformacionUsuarios();
 
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,6 +98,14 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        // TODO add your handling code here:
+        if(controlador_FRM_MantenimientoUsuarios.getOpcion().equals("Planos"))
+        {
+            controlador_FRM_MantenimientoUsuarios.escribirInformacionEnElArchivo();
+        }
+    }//GEN-LAST:event_formComponentHidden
 
  
 

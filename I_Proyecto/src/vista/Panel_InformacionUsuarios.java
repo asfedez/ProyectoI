@@ -4,7 +4,7 @@ package vista;
 
 public class Panel_InformacionUsuarios extends javax.swing.JPanel {
 
-    String arregloInformacionIngresada[]= new String[6];
+    String arregloInformacionIngresada[]= new String[5];
 
     public Panel_InformacionUsuarios() {
         initComponents();
@@ -25,8 +25,7 @@ public class Panel_InformacionUsuarios extends javax.swing.JPanel {
         arregloInformacionIngresada[1]=txtNombreCompleto.getText();
         arregloInformacionIngresada[2]=txtNombreUsuario.getText();
         arregloInformacionIngresada[3]=txtContrasenna.getText();
-        arregloInformacionIngresada[4]=txtConfirmarContrasenna.getText();
-        arregloInformacionIngresada[5]=""+jcbTipo.getSelectedIndex();
+        arregloInformacionIngresada[4]=""+jcbTipo.getSelectedItem();
         
         return arregloInformacionIngresada;
     }
@@ -35,7 +34,7 @@ public class Panel_InformacionUsuarios extends javax.swing.JPanel {
         this.txtNombreCompleto.setText(arreglo[1]);
         this.txtNombreUsuario.setText(arreglo[2]);
         this.txtContrasenna.setText(arreglo[3]);
-        this.jcbTipo.setSelectedIndex(Integer.parseInt(arreglo[4]));
+        this.jcbTipo.setSelectedItem(arreglo[4]);
         
     }
     

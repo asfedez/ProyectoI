@@ -396,7 +396,7 @@ public class ConexionBD {
         boolean ejecuto;
         try {
             cmd = con.createStatement();
-            ejecuto = cmd.execute("INSERT INTO `usuario`(`cedula`, `nombreCompleto`, `nombreUsuario`, `contrasenna`, `tipo`) VALUES ('" + arreglo[0] + "','" + arreglo[1] + "','" + arreglo[2] + "','" + arreglo[3] + "','" + arreglo[4] + "')");
+            ejecuto = cmd.execute("INSERT INTO `usuarios`(`cedula`, `nombreCompleto`, `nombreUsuario`, `contrasenna`, `tipo`) VALUES ('" + arreglo[0] + "','" + arreglo[1] + "','" + arreglo[2] + "','" + arreglo[3] + "','" + arreglo[4] + "')");
 
             return true;
             // rs.close();
@@ -413,7 +413,7 @@ public class ConexionBD {
         boolean ejecuto = false;
         try {
             cmd = con.createStatement();
-            rs = cmd.executeQuery("SELECT * FROM `usuario` WHERE cedula=" + cedula);
+            rs = cmd.executeQuery("SELECT * FROM `usuarios` WHERE cedula=" + cedula);
             while (rs.next()) {
                 arregloInformacionConsultadaUsuarios[0] = rs.getString("cedula");
                 arregloInformacionConsultadaUsuarios[1] = rs.getString("nombreCompleto");
@@ -441,7 +441,7 @@ public class ConexionBD {
         boolean ejecuto;
         try {
             cmd = con.createStatement();
-            ejecuto = cmd.execute("DELETE FROM `usuario` WHERE cedula=" + cedula);
+            ejecuto = cmd.execute("DELETE FROM `usuarios` WHERE cedula=" + cedula);
             return true;
 
         } catch (Exception e) {
@@ -456,7 +456,7 @@ public class ConexionBD {
         int ejecuto = 99;
         try {
             cmd = con.createStatement();
-            ejecuto = cmd.executeUpdate("UPDATE `usuario` SET `nombreCompleto`='" + arreglo[1] + "',`nombreUsuario`='" + arreglo[2] + "',`contrasenna`='" + arreglo[3] + "',`tipo`='" + arreglo[4] + "' WHERE cedula =" + arreglo[0]);
+            ejecuto = cmd.executeUpdate("UPDATE `usuarios` SET `nombreCompleto`='" + arreglo[1] + "',`nombreUsuario`='" + arreglo[2] + "',`contrasenna`='" + arreglo[3] + "',`tipo`='" + arreglo[4] + "' WHERE cedula =" + arreglo[0]);
         } catch (Exception e) {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
 
@@ -471,7 +471,7 @@ public class ConexionBD {
         boolean ejecuto = true;
         try {
             cmd = con.createStatement();
-            rs = cmd.executeQuery("SELECT * FROM `usuario`");
+            rs = cmd.executeQuery("SELECT * FROM `usuarios`");
             while (rs.next()) {
               
                 ejecuto = false;
@@ -492,7 +492,7 @@ public class ConexionBD {
         boolean iniciarSesion = false;
         try {
             cmd = con.createStatement();
-            rs = cmd.executeQuery("SELECT * FROM `usuario` WHERE nombreUsuario='"+informacion[0]+"' and contrasenna='"+informacion[1]+"'");
+            rs = cmd.executeQuery("SELECT * FROM `usuarios` WHERE nombreUsuario='"+informacion[0]+"' and contrasenna='"+informacion[1]+"'");
             while (rs.next()) {
                 
                 iniciarSesion = true;

@@ -55,6 +55,7 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
         if(evento.getActionCommand().equalsIgnoreCase("Usuarios"))
         {
             frm_MantenimientoUsuarios.setVisible(true);
+            frm_MantenimientoUsuarios.establecerOpcionAlControlador(opcion);
         }
     }
 }

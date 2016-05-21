@@ -8,6 +8,7 @@ package vista;
 import controlador.Controlador_FRM_MantenimientoCursos;
 import controlador.Controlador_FRM_MantenimientoEstudiantes;
 import controlador.Controlador_FRM_MantenimientoMatricula;
+import controlador.Controlador_FRM_MantenimientoUsuarios;
 
 /**
  *
@@ -66,6 +67,14 @@ public class Panel_Botones extends javax.swing.JPanel {
         btnAgregar.addActionListener(controlador_FRM_MantenimientoMatricula);
         btnModificar.addActionListener(controlador_FRM_MantenimientoMatricula);
         btnEliminar.addActionListener(controlador_FRM_MantenimientoMatricula);
+    }
+    
+     public void agregarEventosUsuario(Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios)
+    {
+        btnConsultar.addActionListener(controlador_FRM_MantenimientoUsuarios);
+        btnAgregar.addActionListener(controlador_FRM_MantenimientoUsuarios);
+        btnModificar.addActionListener(controlador_FRM_MantenimientoUsuarios);
+        btnEliminar.addActionListener(controlador_FRM_MantenimientoUsuarios);
     }
     
     
