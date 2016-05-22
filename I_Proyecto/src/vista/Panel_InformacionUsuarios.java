@@ -64,6 +64,16 @@ public class Panel_InformacionUsuarios extends javax.swing.JPanel {
         this.jcbTipo.setEnabled(true);
     }
     
+    public boolean confirmarContrasenna()
+    {
+        boolean confirmar = false;
+        
+        if(txtConfirmarContrasenna.getText().equals(txtConfirmarContrasenna.getText()))
+        confirmar=true;
+      
+        return confirmar;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

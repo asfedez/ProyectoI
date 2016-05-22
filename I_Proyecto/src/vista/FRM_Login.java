@@ -1,13 +1,29 @@
 
 package vista;
 
+import controlador.Controlador_FRM_MenuPrincipal;
+
 public class FRM_Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FRM_Login
-     */
+    Controlador_FRM_MenuPrincipal controlador;
     public FRM_Login() {
         initComponents();
+    }
+
+     public void agregarEventos(Controlador_FRM_MenuPrincipal controlador)
+    {
+        this.controlador=controlador;
+        this.btnIniciar.addActionListener(controlador);
+        this.btnCancelar.addActionListener(controlador);
+    }
+    
+    
+    public String[] devolverInformacionDeInicioDeSesion()
+    {
+        String arreglo[] = new String[2];
+        arreglo[0]= this.txtNombreUsuario.getText();
+        arreglo[1]= this.txtContrasenna.getText();
+        return arreglo;
     }
 
     /**

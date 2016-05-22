@@ -26,7 +26,12 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         this.menuItemSalir.addActionListener(controlador);
         
     }
-    
+    public void opcionesUsuario()
+    {
+        this.menuItemCursos.setEnabled(false);
+        this.menuItemEstudiantes.setEnabled(false);
+        this.menuItemUsuarios.setEnabled(false);
+    }
    
     
     @SuppressWarnings("unchecked")
