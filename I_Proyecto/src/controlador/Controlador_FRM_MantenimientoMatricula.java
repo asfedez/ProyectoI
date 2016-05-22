@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import modelo.ArchivoMatriculas;
 import modelo.ArchivoXMLCursos;
 import modelo.ArchivoXMLEstudiantes;
+import modelo.ArchivoXMLMatricula;
 import modelo.ArchivosXMLUsuarios;
 import modelo.ConexionBD;
 import modelo.Matricula;
@@ -34,6 +35,7 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
      ArrayList<String> listaCantidadDeMatriculas = new ArrayList<String>();
      ArchivoXMLCursos archivoXMLCursos;
      ArchivoXMLEstudiantes archivoXMLEstudiantes;
+     ArchivoXMLMatricula archivoXMLMatricula;
     public Controlador_FRM_MantenimientoMatricula(FRM_MantenimientoMatricula frm_MantenimientoMatricula,FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes,FRM_MantenimientoCursos frm_MantenimientoCursos) 
     {
         this.frm_MantenimientoMatricula=frm_MantenimientoMatricula;
@@ -47,6 +49,7 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
         
         this.archivoXMLEstudiantes=frm_MantenimientoEstudiantes.controlador_FRM_MantenimientoEstudiantes.archivoXMLEstudiantes;
         this.archivoXMLCursos=frm_MantenimientoCursos.controlador.archivoXMLCursos;
+        archivoXMLMatricula = new ArchivoXMLMatricula(frm_MantenimientoMatricula);
         
     }
     
@@ -97,6 +100,11 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 {
                     String arreglo[] = archivoXMLEstudiantes.getArregloInformacion();
                     frm_MantenimientoMatricula.colocarNombreEstudiante(arreglo[1]);
+                    encontroEstudiante=true;
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El estudiante no se encuentra, favor dirigirse al módulo de Mantenimiento Estudiantes");
                 }
             }
             
@@ -132,7 +140,16 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
              }
              if(opcion.equals("XML"))
              {
-                 
+                if(archivoXMLCursos.consultarInformacionDelXml(frm_MantenimientoMatricula.devolverSigla()))
+                 {
+                    String arreglo[]=archivoXMLCursos.getArregloInformacion();
+                    frm_MantenimientoMatricula.colocarNombreCurso(arreglo[1]);
+                    encontroCurso=true;
+                 }
+                else
+                {
+                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El estudiante no se encuentra, favor dirigirse al módulo de Mantenimiento Estudiantes");
+                }
              }
             
         }
@@ -144,6 +161,11 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                  frm_MantenimientoMatricula.limpiarSigla();
              }
             if(opcion.equals("BD"))
+            {
+                frm_MantenimientoMatricula.agregarInformacionTabla();
+                frm_MantenimientoMatricula.limpiarSigla();
+            }
+            if(opcion.equals("XML"))
             {
                 frm_MantenimientoMatricula.agregarInformacionTabla();
                 frm_MantenimientoMatricula.limpiarSigla();
@@ -184,6 +206,21 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 encontroEstudiante=false;
                 encontroCurso=false;
             }
+            if(opcion.equals("XML"))
+            {
+                String arreglo[]=new String[3];
+                for(int contador=0;contador<frm_MantenimientoMatricula.getCantidadFilas();contador++)
+                {
+                    arreglo[0]=frm_MantenimientoMatricula.devolverCodigo();
+                    arreglo[1]=frm_MantenimientoMatricula.devolverDato(contador,1);
+                    arreglo[2]=frm_MantenimientoMatricula.devolverDato(contador,3);
+                    archivoXMLMatricula.guardarEnXML(arreglo);
+                }
+                //frm_MantenimientoMatricula.colocarCodigo();
+                frm_MantenimientoMatricula.resetearVentana();
+                encontroEstudiante=false;
+                encontroCurso=false;
+            }
             
         }
         if(e.getActionCommand().equals("Consultar"))
@@ -210,6 +247,17 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                     
                 }
             }
+            if(opcion.equals("XML"))
+            {
+                if(archivoXMLMatricula.consultarInformacionDelXml(frm_MantenimientoMatricula.devolverCodigo()))
+                {
+                    frm_MantenimientoMatricula.habilitarOpciones();
+                }
+                else
+                {
+                    
+                }
+            }
             
         
         }
@@ -228,6 +276,12 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 frm_MantenimientoMatricula.colocarCodigo();
                 frm_MantenimientoMatricula.resetearVentana();
             }
+            if(opcion.equals("XML"))
+            {
+                archivoXMLMatricula.eliminarInformacionDelXml(frm_MantenimientoMatricula.getMatriculaSeleccionada());
+                //frm_MantenimientoMatricula.colocarCodigo();
+                frm_MantenimientoMatricula.resetearVentana();
+            }
            
            
         }
@@ -241,6 +295,11 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 frm_MantenimientoMatricula.resetearVentana();
             }
             if(opcion.equals("BD"))
+            {
+                frm_MantenimientoMatricula.colocarCodigo();
+                frm_MantenimientoMatricula.resetearVentana();
+            }
+             if(opcion.equals("XML"))
             {
                 frm_MantenimientoMatricula.colocarCodigo();
                 frm_MantenimientoMatricula.resetearVentana();
