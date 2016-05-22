@@ -28,6 +28,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="formComponentHidden"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -175,11 +178,13 @@
     <Component class="javax.swing.JButton" name="btnConsultarCedula">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
+        <Property name="actionCommand" type="java.lang.String" value="Buscar Cedula"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnConsultarSigla">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
+        <Property name="actionCommand" type="java.lang.String" value="Buscar Sigla"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">

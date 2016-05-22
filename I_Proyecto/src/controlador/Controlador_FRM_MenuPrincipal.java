@@ -24,9 +24,9 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
     {
         this.frm_MenuPrincipal = frm_MenuPrincipal;
         frm_MantenimientoUsuarios = new FRM_MantenimientoUsuarios();
-        frm_MantenimientoMatricula= new FRM_MantenimientoMatricula();
         frm_MantenimientoCursos=new FRM_MantenimientoCursos();
         frm_MantenimientoEstudiantes= new FRM_MantenimientoEstudiantes();
+        frm_MantenimientoMatricula= new FRM_MantenimientoMatricula(frm_MantenimientoEstudiantes,frm_MantenimientoCursos);
         conexionBD=new ConexionBD();
         conexionBD.realizarConexion();
     }

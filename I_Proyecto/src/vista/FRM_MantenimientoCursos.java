@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class FRM_MantenimientoCursos extends javax.swing.JFrame {
 
    
-    Controlador_FRM_MantenimientoCursos controlador;
+    public Controlador_FRM_MantenimientoCursos controlador;
     public FRM_MantenimientoCursos() {
         initComponents();
         inicializarGUI();

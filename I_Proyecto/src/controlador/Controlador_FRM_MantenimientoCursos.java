@@ -15,7 +15,7 @@ import vista.FRM_MantenimientoCursos;
 public class Controlador_FRM_MantenimientoCursos implements ActionListener
 {
     FRM_MantenimientoCursos frm_MantenimientoCursos;
-    MetodosCursos metodosCursos;
+    public MetodosCursos metodosCursos;
     ArchivoCursos archivoCursos;
     ArchivoXMLCursos archivoXMLCursos;
     ConexionBD conexionBD;

@@ -22,7 +22,7 @@ import vista.FRM_MantenimientoEstudiantes;
  */
 public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener
 {
-    MetodosEstudiantes metodosEstudiantes;
+    public MetodosEstudiantes metodosEstudiantes;
     FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes;
     ArchivoEstudiantes archivoEstudiantes;
     ArchivoXMLEstudiantes archivoXMLEstudiantes;

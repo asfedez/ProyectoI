@@ -2,28 +2,31 @@
 package modelo;
 
 import java.util.ArrayList;
+import vista.FRM_MantenimientoMatricula;
 
 
 public class MetodosMatricula {
-    ArrayList <Matricula> arrayMatricula;
+    ArrayList <Matricula> listaDeMatriculas;
     String arregloInformacionConsultada[]=new String[4];
 
     MetodosCursos metodosCursos;
     MetodosEstudiantes metodosEstudiantes;
+    FRM_MantenimientoMatricula frm_MantenimientoMatricula;
 
     boolean estado;
     
-    public MetodosMatricula(MetodosEstudiantes metodosEstudiantes,MetodosCursos metodosCursos)
+    public MetodosMatricula(MetodosEstudiantes metodosEstudiantes,MetodosCursos metodosCursos,FRM_MantenimientoMatricula frm_MantenimientoMatricula)
     {
-        arrayMatricula=new ArrayList <Matricula>();
+        listaDeMatriculas=new ArrayList <Matricula>();
         this.metodosCursos=metodosCursos;
         this.metodosEstudiantes=metodosEstudiantes;
+        this.frm_MantenimientoMatricula=frm_MantenimientoMatricula;
 
     }
     public void agregarMatricula(String informacion[])
     {
         Matricula temporal=new Matricula(informacion[0], informacion[1], informacion[2], true);
-        arrayMatricula.add(temporal);    
+        listaDeMatriculas.add(temporal);    
     }
     
     
@@ -31,19 +34,19 @@ public class MetodosMatricula {
     {
         boolean existe=false;
         
-        for(int contador=0;contador<arrayMatricula.size();contador++)
+        for(int contador=0;contador<listaDeMatriculas.size();contador++)
         {
-            if(arrayMatricula.get(contador).getCodigo().equals(codigo)&&arrayMatricula.get(contador).getEstado()==true)
+            if(listaDeMatriculas.get(contador).getCodigo().equals(codigo)&&listaDeMatriculas.get(contador).getEstado()==true)
             {
                 arregloInformacionConsultada[0]=codigo;
-                arregloInformacionConsultada[1]=arrayMatricula.get(contador).getCedula();
-                metodosEstudiantes.consultarEstudiante(arrayMatricula.get(contador).getCedula());
+                arregloInformacionConsultada[1]=listaDeMatriculas.get(contador).getCedula();
+                metodosEstudiantes.consultarEstudiante(listaDeMatriculas.get(contador).getCedula());
                 arregloInformacionConsultada[2]=metodosEstudiantes.devolverInformacionConsultada()[0];
-                arregloInformacionConsultada[3]=arrayMatricula.get(contador).getSigla();
+                arregloInformacionConsultada[3]=listaDeMatriculas.get(contador).getSigla();
                 
                 
                 
-                //frm_MantenimientoMatricula.agregarInformacionTabla(arregloInformacionConsultada);
+                frm_MantenimientoMatricula.agregarInformacionTabla(arregloInformacionConsultada);
                 
                 existe=true;  
             }
@@ -53,22 +56,22 @@ public class MetodosMatricula {
     }
     public void modificarMatricula(String arreglo[])
     {
-        for(int contador=0;contador<arrayMatricula.size();contador++)
+        for(int contador=0;contador<listaDeMatriculas.size();contador++)
         {
-            if(arrayMatricula.get(contador).getCodigo().equals(arreglo[0]))
+            if(listaDeMatriculas.get(contador).getCodigo().equals(arreglo[0]))
             {
-                arrayMatricula.get(contador).setCedula(arreglo[1]);
-                arrayMatricula.get(contador).setSigla(arreglo[2]);
+                listaDeMatriculas.get(contador).setCedula(arreglo[1]);
+                listaDeMatriculas.get(contador).setSigla(arreglo[2]);
             }
         }
     }
     public void eliminarMatricula(String arreglo[])
     {
-        for(int contador=0;contador<arrayMatricula.size();contador++)
+        for(int contador=0;contador<listaDeMatriculas.size();contador++)
         {
-            if(arrayMatricula.get(contador).getCodigo().equals(arreglo[0])&&arrayMatricula.get(contador).getSigla().equals(arreglo[1]))
+            if(listaDeMatriculas.get(contador).getCodigo().equals(arreglo[0])&&listaDeMatriculas.get(contador).getSigla().equals(arreglo[1]))
             {
-                arrayMatricula.get(contador).setEstado(false);
+                listaDeMatriculas.get(contador).setEstado(false);
             }
         }
     }
@@ -79,13 +82,13 @@ public class MetodosMatricula {
     public String devolverCodigo()
     {
         String codigo= "0000";
-        if(arrayMatricula.size()==0)
+        if(listaDeMatriculas.size()==0)
         {
             codigo+=1;
         }
         else
         {
-            int numero=Integer.parseInt(arrayMatricula.get(arrayMatricula.size()-1).getCodigo());
+            int numero=Integer.parseInt(listaDeMatriculas.get(listaDeMatriculas.size()-1).getCodigo());
             numero++;
             codigo="0000"+numero;
         }
@@ -94,18 +97,18 @@ public class MetodosMatricula {
     }
     
     /****Archivos*///
-/*    
+  
     public ArrayList<Matricula> devolverLista()
    {
-       return arrayMatricula;
+       return listaDeMatriculas;
    }
    
    public void leerArchivo(ArrayList<Matricula> lista)
    {
        for (int i = 0; i < lista.size(); i++)
        {
-           arrayMatricula.add(lista.get(i));
+           listaDeMatriculas.add(lista.get(i));
        }
    }
-    */
+
 }
