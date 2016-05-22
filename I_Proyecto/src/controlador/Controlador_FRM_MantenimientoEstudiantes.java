@@ -25,7 +25,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener
     public MetodosEstudiantes metodosEstudiantes;
     FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes;
     ArchivoEstudiantes archivoEstudiantes;
-    ArchivoXMLEstudiantes archivoXMLEstudiantes;
+    public ArchivoXMLEstudiantes archivoXMLEstudiantes;
     ConexionBD conexionBD;
     String opcion;
     public Controlador_FRM_MantenimientoEstudiantes(FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes) 

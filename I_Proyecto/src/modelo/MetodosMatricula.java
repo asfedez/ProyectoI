@@ -26,7 +26,7 @@ public class MetodosMatricula {
     public void agregarMatricula(String informacion[])
     {
         Matricula temporal=new Matricula(informacion[0], informacion[1], informacion[2], true);
-        listaDeMatriculas.add(temporal);    
+        listaDeMatriculas.add(temporal);   
     }
     
     
@@ -36,12 +36,12 @@ public class MetodosMatricula {
         
         for(int contador=0;contador<listaDeMatriculas.size();contador++)
         {
-            if(listaDeMatriculas.get(contador).getCodigo().equals(codigo)&&listaDeMatriculas.get(contador).getEstado()==true)
+            if(listaDeMatriculas.get(contador).getCodigo().equals(codigo)&&listaDeMatriculas.get(contador).getEstado())
             {
                 arregloInformacionConsultada[0]=codigo;
                 arregloInformacionConsultada[1]=listaDeMatriculas.get(contador).getCedula();
                 metodosEstudiantes.consultarEstudiante(listaDeMatriculas.get(contador).getCedula());
-                arregloInformacionConsultada[2]=metodosEstudiantes.devolverInformacionConsultada()[0];
+                arregloInformacionConsultada[2]=metodosEstudiantes.devolverInformacionConsultada()[1];
                 arregloInformacionConsultada[3]=listaDeMatriculas.get(contador).getSigla();
                             
                 frm_MantenimientoMatricula.agregarInformacionTabla(arregloInformacionConsultada);

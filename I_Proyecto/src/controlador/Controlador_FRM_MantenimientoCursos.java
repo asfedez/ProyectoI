@@ -17,7 +17,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener
     FRM_MantenimientoCursos frm_MantenimientoCursos;
     public MetodosCursos metodosCursos;
     ArchivoCursos archivoCursos;
-    ArchivoXMLCursos archivoXMLCursos;
+    public ArchivoXMLCursos archivoXMLCursos;
     ConexionBD conexionBD;
     String opcion;
     public Controlador_FRM_MantenimientoCursos(FRM_MantenimientoCursos frm_MantenimientoCursos)

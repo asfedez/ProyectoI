@@ -295,61 +295,33 @@ public class ConexionBD {
     }
 
     /////////////////////////////BD_MatriculaDetalle///////////////////////////
-    public boolean registrarMatriculaDetalle(String arreglo[]) {
-        ResultSet rs = null;
-        Statement cmd = null;
-        boolean ejecuto;
-        try {
-
-            cmd = con.createStatement();
-            ejecuto = cmd.execute("INSERT INTO `detalle_matricula`(`codigo`, `cedula`, `sigla`) VALUES ( '" + arreglo[0] + "','" + arreglo[1] + "','" + arreglo[2] + "')");
-
-            return true;
-            // rs.close();
-        } catch (Exception e) {
-            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
-            return false;
-        }
-
-    }
-
-    public String[] devolverInformacionConsultadaMatriculaDetalle() {
-        return arregloInformacionConsultadaMatriculaDetalle;
-    }
-
-    public boolean eliminarMatriculaDetalle(String arreglo[]) {
-        ResultSet rs = null;
-        Statement cmd = null;
-        boolean ejecuto;
-        try {
-            cmd = con.createStatement();
-            ejecuto = cmd.execute("DELETE FROM `detalle_matricula` WHERE codigo='"+ arreglo[0]+"'and sigla ='"+arreglo[1]+"'");
-            return true;
-
-        } catch (Exception e) {
-            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
-            return false;
-        }
-    }
-
-    public int modificarMatriculaDetalle(String arreglo[])//metodo sin fincion
+    
+    public boolean registrarMatriculaDetalle(String arreglo[])
     {
         ResultSet rs = null;
         Statement cmd = null;
-        int ejecuto = 99;
+        boolean ejecuto;
         try {
-            cmd = con.createStatement();
-            ejecuto = cmd.executeUpdate("UPDATE `estudiantes` SET `nombre`='" + arreglo[1] + "',`direccion`='" + arreglo[2] + "' WHERE cedula =" + arreglo[0]);
-        } catch (Exception e) {
-            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
-
+           
+                cmd = con.createStatement();
+                ejecuto = cmd.execute("INSERT INTO `matricula_detalle`(`codigo`, `cedula`, `sigla`) VALUES ( '"+arreglo[0]+"','"+arreglo[1]+"','"+arreglo[2]+"')");
+                
+               return true;
+               // rs.close();
         }
-        return ejecuto;
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+            return false;
+        }
+        
     }
-
-    public boolean consultarMatriculaDetalle(String codigo) {
-
-        ResultSet rs = null;
+    
+    ////***prueba consultar***///
+    public boolean consultarMatriculaPrueba(String codigo)
+    {
+        
+         ResultSet rs = null;
         Statement cmd = null;
         boolean ejecuto = false;
         try {
@@ -360,21 +332,31 @@ public class ConexionBD {
                 {
                     arregloInformacionConsultadaMatriculaDetalle[0] = rs.getString("codigo");
                     arregloInformacionConsultadaMatriculaDetalle[1] = rs.getString("cedula");
-                    arregloInformacionConsultadaMatriculaDetalle[2] = consultarNombreEstudiante(arregloInformacionConsultadaMatriculaDetalle);
-                    arregloInformacionConsultadaMatriculaDetalle[3] = rs.getString("siglas");
+                    consultarEstudiante(arregloInformacionConsultadaMatriculaDetalle[1]);
+                    arregloInformacionConsultadaMatriculaDetalle[2] = arregloInformacionConsultadaEstudiantes[1];
+                    arregloInformacionConsultadaMatriculaDetalle[3] = rs.getString("sigla");
+                   // consultarNombreEstudiante(arregloInformacionConsultada);
                     frm_MantenimientoMatricula.agregarInformacionTabla(arregloInformacionConsultadaMatriculaDetalle);
                     ejecuto= true;
                 }
                 rs.close();
-
-        } catch (Exception e) {
+                
+        }
+        catch(Exception e)
+        {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
-
+          
         }
         return ejecuto;
     }
     
-     public String consultarNombreEstudiante(String arreglo[])
+    public String[] devolverInformacionConsultada()
+    {
+        return arregloInformacionConsultadaMatriculaDetalle;
+    }
+    
+    
+    public String consultarNombreEstudiante(String arreglo[])
     {
         ResultSet rs = null;
         Statement cmd = null;
@@ -400,32 +382,25 @@ public class ConexionBD {
         return nombre;
     }
     
-    public String[] devolverInformacionConsultada()
+   //*****eliminar prueba**/// 
+    public boolean eliminarMatriculaDetalle(String arreglo[])
     {
-        return arregloInformacionConsultadaMatriculaDetalle;
-    }
-
-    public String devolverNombre(String cedula)
-    {
-      ResultSet rs = null;
+        ResultSet rs = null;
         Statement cmd = null;
-        String nombreObtenido = "";
-        try {
-            cmd = con.createStatement();
-            rs = cmd.executeQuery("SELECT * FROM `estudiantes` WHERE cedula='" + cedula + "'");
-            while (rs.next()) {
-               nombreObtenido = rs.getString("nombre");             
-
-            }
-            rs.close();
-
-        } catch (Exception e) {
-            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
-
+        boolean ejecuto;
+        try
+        {
+             cmd = con.createStatement();
+             ejecuto = cmd.execute("DELETE FROM `matricula_detalle` WHERE codigo = '"+arreglo[0]+"' and sigla ='"+arreglo[1]+"'");
+             return true;
+                 
         }
-        return nombreObtenido;
+        catch(Exception e)
+        {
+             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+             return false;
+        }
     }
-
 
     ////////////////////////BD_Usuarios///////////////////////////////
     public boolean registrarUsuarios(String arreglo[]) {

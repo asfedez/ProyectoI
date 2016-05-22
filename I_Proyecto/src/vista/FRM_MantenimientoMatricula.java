@@ -73,6 +73,7 @@ public class FRM_MantenimientoMatricula extends javax.swing.JFrame {
         {
             modelo.removeRow(0);
         }
+        this.panel_Botones1.inicializarGUI();
     }
     public void limpiarSigla()
     {
@@ -121,8 +122,11 @@ public class FRM_MantenimientoMatricula extends javax.swing.JFrame {
     }
     public void colocarCodigo()
     {
-        this.txtCodigo.setText(controlador_FRM_MantenimientoMatricula.devolverCodigo());
-       
+        this.txtCodigo.setText(metodosMatricula.devolverCodigo());
+    }
+    public void colocarCodigoBD()
+    {
+        this.txtCodigo.setText(controlador_FRM_MantenimientoMatricula.devolverCodigoBD());
     }
     public int getCantidadFilas()
     {
@@ -317,6 +321,7 @@ public class FRM_MantenimientoMatricula extends javax.swing.JFrame {
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         // TODO add your handling code here:
+        if(controlador_FRM_MantenimientoMatricula.opcion.equalsIgnoreCase("Planos"))
         controlador_FRM_MantenimientoMatricula.escribirInformacionEnElArchivo();
     }//GEN-LAST:event_formComponentHidden
 

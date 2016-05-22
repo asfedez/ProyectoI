@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.ArchivoMatriculas;
+import modelo.ArchivoXMLCursos;
+import modelo.ArchivoXMLEstudiantes;
+import modelo.ArchivosXMLUsuarios;
 import modelo.ConexionBD;
 import modelo.Matricula;
 import modelo.MetodosCursos;
@@ -26,9 +29,11 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
     boolean encontroCurso=false;
     public MetodosMatricula metodosMatricula;
      ArchivoMatriculas archivoMatricula;
-     String opcion;
+     public String opcion;
      ConexionBD conexionBD;
      ArrayList<String> listaCantidadDeMatriculas = new ArrayList<String>();
+     ArchivoXMLCursos archivoXMLCursos;
+     ArchivoXMLEstudiantes archivoXMLEstudiantes;
     public Controlador_FRM_MantenimientoMatricula(FRM_MantenimientoMatricula frm_MantenimientoMatricula,FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes,FRM_MantenimientoCursos frm_MantenimientoCursos) 
     {
         this.frm_MantenimientoMatricula=frm_MantenimientoMatricula;
@@ -37,7 +42,11 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
         metodosMatricula=new MetodosMatricula(metodosEstudiantes,metodosCursos,frm_MantenimientoMatricula);
         archivoMatricula=new ArchivoMatriculas();
         crearArchivo();
-        conexionBD=new ConexionBD();
+        conexionBD=new ConexionBD(this.frm_MantenimientoMatricula);
+        listaCantidadDeMatriculas=conexionBD.consultarCodigoMatriculas();
+        
+        this.archivoXMLEstudiantes=frm_MantenimientoEstudiantes.controlador_FRM_MantenimientoEstudiantes.archivoXMLEstudiantes;
+        this.archivoXMLCursos=frm_MantenimientoCursos.controlador.archivoXMLCursos;
         
     }
     
@@ -51,11 +60,12 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
         return opcion;
     } 
     
-    public void actionPerformed(ActionEvent evento)
+   public void actionPerformed(ActionEvent e)
     {
-        if(evento.getActionCommand().equalsIgnoreCase("Buscar Cedula"))
+        
+        if(e.getActionCommand().equals("Buscar Cedula"))
         {
-            if(opcion.equalsIgnoreCase("Planos"))
+            if(opcion.equals("Planos"))
             {
                 if(metodosEstudiantes.consultarEstudiante(frm_MantenimientoMatricula.devolverCedula()))
                 {
@@ -65,12 +75,10 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El estudiante no se encuentra, verifique en Estudiantes");
-                
-                 }
+                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El estudiante no se encuentra, favor dirigirse al módulo de Mantenimiento Estudiantes");
+                }
             }
-            
-            if(opcion.equalsIgnoreCase("BD"))
+            if(opcion.equals("BD"))
             {
                 if(conexionBD.consultarEstudiante(frm_MantenimientoMatricula.devolverCedula()))
                 {
@@ -80,16 +88,24 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El estudiante no se encuentra, verifique en Estudiantes");
+                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El estudiante no se encuentra, favor dirigirse al módulo de Mantenimiento Estudiantes");
                 }
             }
-             
-        }
-        if(evento.getActionCommand().equalsIgnoreCase("Buscar Sigla"))
-        {
-             if(opcion.equalsIgnoreCase("Planos"))
+            if(opcion.equalsIgnoreCase("XML"))
             {
-                if(metodosCursos.consultarCurso(frm_MantenimientoMatricula.devolverSigla()))
+                if(archivoXMLEstudiantes.consultarInformacionDelXml(frm_MantenimientoMatricula.devolverCedula()))
+                {
+                    String arreglo[] = archivoXMLEstudiantes.getArregloInformacion();
+                    frm_MantenimientoMatricula.colocarNombreEstudiante(arreglo[1]);
+                }
+            }
+            
+        }
+        if(e.getActionCommand().equals("Buscar Sigla"))
+        {
+            if(opcion.equals("Planos"))
+            {
+                 if(metodosCursos.consultarCurso(frm_MantenimientoMatricula.devolverSigla()))
                 {
                     String arreglo[]=metodosCursos.devolverInformacionConsultada();
                     frm_MantenimientoMatricula.colocarNombreCurso(arreglo[1]);
@@ -97,42 +113,45 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El curso no se encuentra, verifique en Cursos");
+                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El curso no se encuentra, favor dirigirse al módulo de Mantenimiento Cursos");
                 }
             }
-            if(opcion.equalsIgnoreCase("BD"))
-            {
-                if(conexionBD.consultarCurso(frm_MantenimientoMatricula.devolverSigla()))
+             if(opcion.equals("BD"))
+             {
+                 if(conexionBD.consultarCurso(frm_MantenimientoMatricula.devolverSigla()))
                 {
                     String arreglo[]=conexionBD.devolverInformacionConsultadaCursos();
                     frm_MantenimientoMatricula.colocarNombreCurso(arreglo[1]);
                     encontroCurso=true;
                 }
-                else
-                {
-                    JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El curso no se encuentra, verifique en Cursos");
-                }
-            }
+                 else
+                 {
+                     JOptionPane.showMessageDialog(frm_MantenimientoMatricula, "El curso no se encuentra, favor dirigirse al módulo de Mantenimiento Cursos");
+                 }
+                     
+             }
+             if(opcion.equals("XML"))
+             {
+                 
+             }
+            
         }
-               
-        
-        if(evento.getActionCommand().equals("Agregar"))
+        if(e.getActionCommand().equals("Agregar"))
         {
-            if(opcion.equalsIgnoreCase("Planos"))
+            if(opcion.equals("Planos"))
+             {
+                 frm_MantenimientoMatricula.agregarInformacionTabla();
+                 frm_MantenimientoMatricula.limpiarSigla();
+             }
+            if(opcion.equals("BD"))
             {
                 frm_MantenimientoMatricula.agregarInformacionTabla();
                 frm_MantenimientoMatricula.limpiarSigla();
             }
-            if(opcion.equalsIgnoreCase("BD"))
-            {
-                frm_MantenimientoMatricula.agregarInformacionTabla();
-                frm_MantenimientoMatricula.limpiarSigla();
-            }
-                
         }
-        if(evento.getActionCommand().equals("Finalizar matricula"))
+        if(e.getActionCommand().equals("Finalizar matricula"))
         {
-            if(opcion.equalsIgnoreCase("Planos"))
+            if(opcion.equals("Planos"))
             {
                 String arreglo[]=new String[3];
                 for(int contador=0;contador<frm_MantenimientoMatricula.getCantidadFilas();contador++)
@@ -144,13 +163,12 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 }
                 frm_MantenimientoMatricula.colocarCodigo();
                 frm_MantenimientoMatricula.resetearVentana();
-               // frm_MantenimientoMatricula.inicializarGUI();
                 encontroEstudiante=false;
                 encontroCurso=false;
             }
-            if(opcion.equalsIgnoreCase("BD"))
+            if(opcion.equals("BD"))
             {
-                 String arreglo[]=new String[3];
+                String arreglo[]=new String[3];
             
                 for(int contador=0;contador<frm_MantenimientoMatricula.getCantidadFilas();contador++)
                 {
@@ -161,17 +179,16 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
                 }
                 conexionBD.registrarMatricula(arreglo);
                 listaCantidadDeMatriculas.add(frm_MantenimientoMatricula.devolverCodigo());
-                frm_MantenimientoMatricula.colocarCodigo();
+                frm_MantenimientoMatricula.colocarCodigoBD();
                 frm_MantenimientoMatricula.resetearVentana();
                 encontroEstudiante=false;
                 encontroCurso=false;
             }
-           
-                 
+            
         }
-        if(evento.getActionCommand().equals("Consultar"))
+        if(e.getActionCommand().equals("Consultar"))
         {
-            if(opcion.equalsIgnoreCase("Planos"))
+            if(opcion.equals("Planos"))
             {
                 if(metodosMatricula.consultarMatricula(frm_MantenimientoMatricula.devolverCodigo()))
                 {
@@ -182,54 +199,56 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
 
                 }
             }
-            if(opcion.equalsIgnoreCase("BD"))
+            if(opcion.equals("BD"))
             {
-                if(conexionBD.consultarMatriculaDetalle(frm_MantenimientoMatricula.devolverCodigo()))
+                if(conexionBD.consultarMatriculaPrueba(frm_MantenimientoMatricula.devolverCodigo()))
                 {
                     frm_MantenimientoMatricula.habilitarOpciones();
                 }
                 else
                 {
-                    System.out.println("no entró bd");
+                    
                 }
             }
             
+        
         }
         
-        if(evento.getActionCommand().equals("Eliminar"))
+        if(e.getActionCommand().equals("Eliminar"))
         {
-            if(opcion.equalsIgnoreCase("Planos"))
+            if(opcion.equals("Planos"))
             {
-                metodosMatricula.eliminarMatricula(frm_MantenimientoMatricula.getMatriculaSeleccionada());
+                 metodosMatricula.eliminarMatricula(frm_MantenimientoMatricula.getMatriculaSeleccionada());
                 frm_MantenimientoMatricula.colocarCodigo();
                 frm_MantenimientoMatricula.resetearVentana();
             }
-            if(opcion.equalsIgnoreCase("BD"))
+            if(opcion.equals("BD"))
             {
                 conexionBD.eliminarMatriculaDetalle(frm_MantenimientoMatricula.getMatriculaSeleccionada());
                 frm_MantenimientoMatricula.colocarCodigo();
                 frm_MantenimientoMatricula.resetearVentana();
             }
-            
+           
+           
         }
-        verificarConsultas();
-    }
-    public String devolverCodigo()
-    {
-        String codigo= "0000";
         
-        if(listaCantidadDeMatriculas.size()==0)
+        
+        if(e.getActionCommand().equals("Modificar"))
         {
-            codigo+=1;
+            if(opcion.equals("Planos"))
+            {
+                frm_MantenimientoMatricula.colocarCodigo();
+                frm_MantenimientoMatricula.resetearVentana();
+            }
+            if(opcion.equals("BD"))
+            {
+                frm_MantenimientoMatricula.colocarCodigo();
+                frm_MantenimientoMatricula.resetearVentana();
+            }
+
         }
-        else
-        {
-            int numero=Integer.parseInt(listaCantidadDeMatriculas.get(listaCantidadDeMatriculas.size()-1));
-            numero++;
-            codigo="0000"+numero;
-        }
-        codigo=codigo.substring(codigo.length()-5, codigo.length());
-        return codigo; 
+
+        verificarConsultas();
     }
     public void verificarConsultas()
     {
@@ -239,8 +258,7 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
         }
     }
     
-    
-    public void crearArchivo()
+     public void crearArchivo()
     {
       archivoMatricula.leerEnElArchivo();
         
@@ -261,12 +279,29 @@ public class Controlador_FRM_MantenimientoMatricula implements ActionListener
         archivoMatricula.crearArchivo();
         ArrayList <Matricula> lista = metodosMatricula.devolverLista();
         
-        for(int i = 0; i < lista.size(); i++) 
+        for (int i = 0; i < lista.size(); i++) 
         {
                archivoMatricula.escribirEnElArchivo(lista.get(i));
             }
         
     }
     
-    
+    public String devolverCodigoBD()
+    {
+        String codigo= "0000";
+      
+            if(listaCantidadDeMatriculas.size()==0)
+            {
+                codigo+=1;
+                System.out.println("no hay matriculas en bd");            }
+            else
+            {
+                int numero=Integer.parseInt(listaCantidadDeMatriculas.get(listaCantidadDeMatriculas.size()-1));
+                numero++;
+                codigo="0000"+numero;
+            }
+            codigo=codigo.substring(codigo.length()-5, codigo.length());
+            
+        return codigo; 
+    }
 }
