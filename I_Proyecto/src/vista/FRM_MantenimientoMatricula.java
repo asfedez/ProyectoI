@@ -2,155 +2,151 @@
 package vista;
 
 import controlador.Controlador_FRM_MantenimientoMatricula;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.MetodosMatricula;
 
 public class FRM_MantenimientoMatricula extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
     Controlador_FRM_MantenimientoMatricula controlador_FRM_MantenimientoMatricula;
-    DefaultTableModel modeloDeLaTabla;
     MetodosMatricula metodosMatricula;
-    public FRM_MantenimientoMatricula(FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes,FRM_MantenimientoCursos frm_MantenimientoCursos) 
-    {
+    String arregloInformacionTabla[]=new String[4];
+   
+    public FRM_MantenimientoMatricula(FRM_MantenimientoEstudiantes frm_MantenimientoEstudiantes,FRM_MantenimientoCursos frm_MantenimientoCursos) {
         initComponents();
-        controlador_FRM_MantenimientoMatricula = new Controlador_FRM_MantenimientoMatricula(this,frm_MantenimientoEstudiantes,frm_MantenimientoCursos);
-        modeloDeLaTabla= new DefaultTableModel();
+        setLocation(200,200);
+        controlador_FRM_MantenimientoMatricula= new Controlador_FRM_MantenimientoMatricula(this,frm_MantenimientoEstudiantes,frm_MantenimientoCursos);
+        agregarEventos();
         metodosMatricula=controlador_FRM_MantenimientoMatricula.metodosMatricula;
+        modelo=new DefaultTableModel();
         colocarTitulosTabla();
-        inicializarGUI();
-        agregarEventos(controlador_FRM_MantenimientoMatricula);
     }
-    
-    public void agregarEventos(Controlador_FRM_MantenimientoMatricula controlador_FRM_MantenimientoMatricula)
+    public void establecerOpcionAlControlador(String opcion)
     {
-        btnConsultarCedula.addActionListener(controlador_FRM_MantenimientoMatricula);
-        btnConsultarSigla.addActionListener(controlador_FRM_MantenimientoMatricula);
-        btnFinalizar.addActionListener(controlador_FRM_MantenimientoMatricula);
-        panel_Botones1.agregarEventosMatricula(controlador_FRM_MantenimientoMatricula);
+       controlador_FRM_MantenimientoMatricula.setOpcion(opcion);
     }
-    
-    
-    
-    public String[] devolverInformacionIngresada()
+   
+    public void agregarInformacionTabla()
     {
-        String arreglo[] = new String[2];
-        arreglo[0]=txtCedula.getText();
-        arreglo[1]=txtSigla.getText();
-        return arreglo;
+        
+        arregloInformacionTabla[0]=this.txtCodigo.getText();
+        arregloInformacionTabla[1]=this.txtCedula.getText();
+        arregloInformacionTabla[2]=this.txtNombreEstudiante.getText();
+        arregloInformacionTabla[3]=this.txtSigla.getText();
+        modelo.addRow(arregloInformacionTabla);
+        
     }
     
+    public String[] devolverAregloInformacionTabla()
+    {
+        return arregloInformacionTabla;
+    }
+    
+     public void agregarInformacionTabla(String arreglo[])
+    {
+        
+            modelo.addRow(arreglo);
+            colocarNombreEstudiante(arreglo[2]); 
+            this.txtCedula.setText(arreglo[1]);
+        
+    }
+    
+    public void agregarEventos()
+    {
+        this.btnConsultarCedula.addActionListener(controlador_FRM_MantenimientoMatricula);
+        this.btnConsultarSigla.addActionListener(controlador_FRM_MantenimientoMatricula);
+        this.btnFinalizar.addActionListener(controlador_FRM_MantenimientoMatricula);
+        this.panel_Botones1.agregarEventosMatricula(controlador_FRM_MantenimientoMatricula);
+        
+    }
+    public void resetearVentana()
+    {
+        this.txtCedula.setText("");
+        this.txtNombreEstudiante.setText("");
+        this.txtSigla.setText("");
+        this.txtNombreCurso.setText("");
+        
+        int tamano = modelo.getRowCount();
+        
+        for(int contador=0;contador<tamano;contador++)
+        {
+            modelo.removeRow(0);
+        }
+    }
+    public void limpiarSigla()
+    {
+        this.txtSigla.setText("");
+        this.txtNombreCurso.setText("");
+    }
+    public String devolverCedula()
+    {
+        return this.txtCedula.getText();
+    }
+    public String devolverSigla()
+    {
+        return this.txtSigla.getText();
+    }
+    public String devolverCodigo()
+    {
+        return this.txtCodigo.getText();
+    }
     public void colocarNombreEstudiante(String nombre)
     {
-        txtNombreEstudiante.setText(nombre);
+        this.txtNombreEstudiante.setText(nombre);
+    }
+    public String devolverDato(int fila, int columna)
+    {
+        return ""+modelo.getValueAt(fila, columna);
     }
     public void colocarNombreCurso(String nombre)
     {
-        txtNombreCurso.setText(nombre);
+        this.txtNombreCurso.setText(nombre);
     }
-    
-    
-    
-    /***************Para agregar la tabla*********************/
+    public void mostrarMensaje(String mensaje)
+    {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
     public void colocarTitulosTabla()
     {
-        this.tbl_Tabla.setModel(modeloDeLaTabla);
-        modeloDeLaTabla.addColumn("Código");
-        modeloDeLaTabla.addColumn("Cédula");
-        modeloDeLaTabla.addColumn("Nombre Est.");
-        modeloDeLaTabla.addColumn("Sigla");
+        this.tbl_Tabla.setModel(modelo);
+        modelo.addColumn("Código");
+        modelo.addColumn("Cédula");
+        modelo.addColumn("Nombre Est.");
+        modelo.addColumn("Sigla");
+    }
+    public void habilitarAgregar()
+    {
+        this.panel_Botones1.habilitarAgregar();
+    }
+    public void colocarCodigo()
+    {
+        this.txtCodigo.setText(controlador_FRM_MantenimientoMatricula.devolverCodigo());
+       
+    }
+    public int getCantidadFilas()
+    {
+        return modelo.getRowCount();
+    }
+    
+    public void habilitarOpciones()
+    {
+        this.panel_Botones1.habilitarEdicion();
     }
     
     public int devolverFilaSeleccionada()
-    {  
+    {
         return this.tbl_Tabla.getSelectedRow();
     }
     
-     public String[] getMatriculaSeleccionada()
+    
+    public String[] getMatriculaSeleccionada()
     {
         String informacion[] = new String[2];
-        informacion[0] = ""+modeloDeLaTabla.getValueAt(devolverFilaSeleccionada(), 0);
-        informacion[1]= ""+modeloDeLaTabla.getValueAt(devolverFilaSeleccionada(), 3);
-        modeloDeLaTabla.removeRow(devolverFilaSeleccionada());
+        informacion[0] = ""+modelo.getValueAt(devolverFilaSeleccionada(), 0);
+        informacion[1]= ""+modelo.getValueAt(devolverFilaSeleccionada(), 3);
+        modelo.removeRow(devolverFilaSeleccionada());
         return informacion;
-    }
-     
-    public void agregarInformacionTabla(String arreglo[])
-    {
-            modeloDeLaTabla.addRow(arreglo);
-            this.txtNombreEstudiante.setText(arreglo[2]);
-            this.txtCedula.setText(arreglo[1]);
-    }
-    
-     public void agregarInformacionTabla()
-    {
-        String arreglo[]=new String[4];
-        arreglo[0]=this.txtCodigo.getText();
-        arreglo[1]=this.txtCedula.getText();
-        arreglo[2]=this.txtNombreEstudiante.getText();
-        arreglo[3]=this.txtSigla.getText();
-        modeloDeLaTabla.addRow(arreglo);
-        
-    }
-   
-     public void limpiarSigla()
-     {
-         txtNombreCurso.setText("");
-         txtSigla.setText("");
-     }
-     
-     
-    public String devolverDato(int fila, int columna)
-    {
-        return ""+modeloDeLaTabla.getValueAt(fila, columna);
-    }
-    
-     public String devolverCodigo()
-    {
-        return this.txtCodigo.getText();
-    } 
-     
-    public int getCantidadFilas()
-    {
-        return modeloDeLaTabla.getRowCount();
-    }
-    
-    public void colocarCodigo()
-    {
-        this.txtCodigo.setText(metodosMatricula.devolverCodigo());
-       
-    }
-    /*****controles**/
-     public void inicializarGUI()
-     {
-         txtCodigo.setEditable(true);
-         txtCedula.setText("");
-         txtCodigo.setText(""); 
-         txtNombreEstudiante.setEnabled(false);
-         txtNombreEstudiante.setText("");
-         txtNombreCurso.setEnabled(false);
-         txtNombreCurso.setText("");
-      
-     }
-     
-    public void habilitarAgregar()
-    {
-        panel_Botones1.habilitarAgregar();
-        txtCodigo.setEnabled(true);
-        txtCedula.setEnabled(false);
-        txtSigla.setEnabled(false);
-        txtNombreEstudiante.setEnabled(false);
-        txtNombreCurso.setEnabled(false);
-        
-    }
-    
-    public void habilitarEdicion()
-    {
-        txtCodigo.setEnabled(true);
-        txtCedula.setEnabled(false);
-        txtSigla.setEnabled(false);
-        txtNombreEstudiante.setEnabled(false);
-        txtNombreCurso.setEnabled(false);
-        panel_Botones1.habilitarEdicion();
     }
     
 
@@ -208,6 +204,10 @@ public class FRM_MantenimientoMatricula extends javax.swing.JFrame {
         jLabel3.setText("Sigla");
 
         jLabel4.setText("Nombre del curso");
+
+        txtNombreEstudiante.setEnabled(false);
+
+        txtNombreCurso.setEnabled(false);
 
         btnConsultarCedula.setText("Buscar");
         btnConsultarCedula.setActionCommand("Buscar Cedula");

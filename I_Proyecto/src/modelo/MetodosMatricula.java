@@ -43,9 +43,7 @@ public class MetodosMatricula {
                 metodosEstudiantes.consultarEstudiante(listaDeMatriculas.get(contador).getCedula());
                 arregloInformacionConsultada[2]=metodosEstudiantes.devolverInformacionConsultada()[0];
                 arregloInformacionConsultada[3]=listaDeMatriculas.get(contador).getSigla();
-                
-                
-                
+                            
                 frm_MantenimientoMatricula.agregarInformacionTabla(arregloInformacionConsultada);
                 
                 existe=true;  

@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import vista.FRM_MantenimientoMatricula;
 //import vista.FRM_Matricula;
 
 /**
@@ -24,11 +25,16 @@ public class ConexionBD {
     String arregloInformacionConsultadaMatricula[] = new String[2];
     String arregloInformacionConsultadaMatriculaDetalle[] = new String[4];
     String arregloInformacionConsultadaUsuarios[] = new String[5];
-
-    //FRM_Matricula frm_Matricula;
+    FRM_MantenimientoMatricula frm_MantenimientoMatricula;
 
     public ConexionBD() {
        realizarConexion();
+    }
+    
+    public ConexionBD(FRM_MantenimientoMatricula frm_MantenimientoMatricula)
+    {
+        realizarConexion();
+        this.frm_MantenimientoMatricula=frm_MantenimientoMatricula;
     }
 
 
@@ -341,30 +347,62 @@ public class ConexionBD {
         return ejecuto;
     }
 
-    public boolean consultarMatriculaPrueba(String codigo) {
+    public boolean consultarMatriculaDetalle(String codigo) {
 
         ResultSet rs = null;
-        ResultSet rsNombre = null;
         Statement cmd = null;
         boolean ejecuto = false;
         try {
-            cmd = con.createStatement();
-            rs = cmd.executeQuery("SELECT * FROM `detalle_matricula` WHERE codigo='" + codigo + "'");
-            while (rs.next()) {
-                arregloInformacionConsultadaMatriculaDetalle[0] = rs.getString("codigo");
-                arregloInformacionConsultadaMatriculaDetalle[1] = rs.getString("cedula");
-                arregloInformacionConsultadaMatriculaDetalle[2] = devolverNombre(arregloInformacionConsultadaMatriculaDetalle[1]);
-                arregloInformacionConsultadaMatriculaDetalle[3] = rs.getString("sigla");
-                //frm_Matricula.agregarInformacionTabla(arregloInformacionConsultadaMatriculaDetalle);
-                ejecuto = true;
-            }
-            rs.close();
+                cmd = con.createStatement();
+                rs = cmd.executeQuery("SELECT * FROM `matricula_detalle` WHERE codigo="+codigo);
+                
+                while (rs.next()) 
+                {
+                    arregloInformacionConsultadaMatriculaDetalle[0] = rs.getString("codigo");
+                    arregloInformacionConsultadaMatriculaDetalle[1] = rs.getString("cedula");
+                    arregloInformacionConsultadaMatriculaDetalle[2] = consultarNombreEstudiante(arregloInformacionConsultadaMatriculaDetalle);
+                    arregloInformacionConsultadaMatriculaDetalle[3] = rs.getString("siglas");
+                    frm_MantenimientoMatricula.agregarInformacionTabla(arregloInformacionConsultadaMatriculaDetalle);
+                    ejecuto= true;
+                }
+                rs.close();
 
         } catch (Exception e) {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
 
         }
         return ejecuto;
+    }
+    
+     public String consultarNombreEstudiante(String arreglo[])
+    {
+        ResultSet rs = null;
+        Statement cmd = null;
+        
+        String nombre="";
+        boolean ejecuto = false;
+        try {
+                cmd = con.createStatement();
+                rs = cmd.executeQuery("SELECT nombre FROM `estudiantes` WHERE cedula="+arreglo[1]);
+                while (rs.next()) 
+                {
+                    nombre = rs.getString("nombre");
+                    ejecuto= true;
+                }
+                rs.close();
+                
+        }
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+          
+        }
+        return nombre;
+    }
+    
+    public String[] devolverInformacionConsultada()
+    {
+        return arregloInformacionConsultadaMatriculaDetalle;
     }
 
     public String devolverNombre(String cedula)
@@ -376,7 +414,7 @@ public class ConexionBD {
             cmd = con.createStatement();
             rs = cmd.executeQuery("SELECT * FROM `estudiantes` WHERE cedula='" + cedula + "'");
             while (rs.next()) {
-               nombreObtenido = rs.getString("nombreCompleto");             
+               nombreObtenido = rs.getString("nombre");             
 
             }
             rs.close();

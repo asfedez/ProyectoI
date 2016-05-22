@@ -170,10 +170,16 @@
     <Component class="javax.swing.JTextField" name="txtCedula">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombreEstudiante">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSigla">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombreCurso">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnConsultarCedula">
       <Properties>

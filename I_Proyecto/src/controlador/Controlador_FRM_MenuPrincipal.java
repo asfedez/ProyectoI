@@ -51,6 +51,8 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
         if(evento.getActionCommand().equalsIgnoreCase("Matricula"))
         {
             frm_MantenimientoMatricula.setVisible(true);
+            frm_MantenimientoMatricula.colocarCodigo();   
+            frm_MantenimientoMatricula.establecerOpcionAlControlador(opcion);
         }
         if(evento.getActionCommand().equalsIgnoreCase("Usuarios"))
         {
