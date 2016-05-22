@@ -66,9 +66,10 @@ public class Panel_InformacionUsuarios extends javax.swing.JPanel {
     
     public boolean confirmarContrasenna()
     {
+        
         boolean confirmar = false;
         
-        if(txtConfirmarContrasenna.getText().equals(txtConfirmarContrasenna.getText()))
+        if(txtContrasenna.getText().equals(txtConfirmarContrasenna.getText()))
         confirmar=true;
       
         return confirmar;

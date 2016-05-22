@@ -1,16 +1,17 @@
 
 package vista;
 
+import controlador.Controlador_FRM_Inicio;
 import controlador.Controlador_FRM_MenuPrincipal;
 
 public class FRM_Login extends javax.swing.JFrame {
 
-    Controlador_FRM_MenuPrincipal controlador;
+    Controlador_FRM_Inicio controlador;
     public FRM_Login() {
         initComponents();
     }
 
-     public void agregarEventos(Controlador_FRM_MenuPrincipal controlador)
+     public void agregarEventos(Controlador_FRM_Inicio controlador)
     {
         this.controlador=controlador;
         this.btnIniciar.addActionListener(controlador);

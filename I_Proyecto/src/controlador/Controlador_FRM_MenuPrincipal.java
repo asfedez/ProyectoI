@@ -34,14 +34,18 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
         frm_MantenimientoMatricula= new FRM_MantenimientoMatricula(frm_MantenimientoEstudiantes,frm_MantenimientoCursos);
         conexionBD=new ConexionBD();
         conexionBD.realizarConexion();
-        frm_Login=new FRM_Login();
-        mostrarIniciarSesion();
-        frm_Login.agregarEventos(this);
+
+
+      
     }
     
     public void setOpcion(String opcion)
     {
         this.opcion=opcion;
+    }
+    public String getOpcion()
+    {
+        return opcion;
     }
     
     public void actionPerformed(ActionEvent evento)
@@ -72,36 +76,30 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener
             frm_MantenimientoUsuarios.establecerOpcionAlControlador(opcion);
         }
         
-         if(evento.getActionCommand().equalsIgnoreCase("Iniciar sesión"))
-         {
-             iniciarSesion();
-         }
-         if(evento.getActionCommand().equalsIgnoreCase("Cancelar"))
-         {
-             System.exit(0);
-         }
+        
     }
     
      public void mostrarIniciarSesion()
     {
-        
-       ArrayList<Usuario>lista=frm_MantenimientoUsuarios.controlador.archivoUsuarios.leerEnElArchivo();
-         if(frm_MantenimientoUsuarios.controlador.archivoUsuarios.devolverContador()==0)
-        { 
-            frm_MenuPrincipal.setVisible(true);
-        }
-        else
-        {
-            frm_Login.setVisible(true); 
-        }
+       
+            ArrayList<Usuario>lista=frm_MantenimientoUsuarios.controlador_FRM_MantenimientoUsuarios.archivoUsuarios.leerEnElArchivo();
+            if(frm_MantenimientoUsuarios.controlador_FRM_MantenimientoUsuarios.archivoUsuarios.devolverContador()==0)
+           { 
+               //frm_MenuPrincipal.setVisible(true);
+           }
+           else
+           {
+               frm_Login.setVisible(true); 
+           }
+      
     }
     
     public void iniciarSesion()
     {
-        if(frm_MantenimientoUsuarios.controlador.iniciarSesion(frm_Login.devolverInformacionDeInicioDeSesion()))
+        if(frm_MantenimientoUsuarios.controlador_FRM_MantenimientoUsuarios.iniciarSesion(frm_Login.devolverInformacionDeInicioDeSesion()))
         {
             frm_MenuPrincipal.setVisible(true);
-            if(frm_MantenimientoUsuarios.controlador.metodosUsuarios.devolverTipo().equalsIgnoreCase("Usuario"))
+            if(frm_MantenimientoUsuarios.controlador_FRM_MantenimientoUsuarios.metodosUsuarios.devolverTipo().equalsIgnoreCase("Usuario"))
             {
                 frm_MenuPrincipal.opcionesUsuario();
             }

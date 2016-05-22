@@ -498,24 +498,60 @@ public class ConexionBD {
         return ejecuto;
     }
     
-    public boolean iniciarSesion(String informacion[])
+   
+    
+    ///para iniciar sesion///
+     public boolean consultarUsuarios()
     {
-         ResultSet rs = null;
+        ResultSet rs = null;
         Statement cmd = null;
-        boolean iniciarSesion = false;
+        boolean ejecuto = true;
         try {
-            cmd = con.createStatement();
-            rs = cmd.executeQuery("SELECT * FROM `usuarios` WHERE nombreUsuario='"+informacion[0]+"' and contrasenna='"+informacion[1]+"'");
-            while (rs.next()) {
+                cmd = con.createStatement();
+                rs = cmd.executeQuery("SELECT * FROM `usuarios`");
                 
-                iniciarSesion = true;
-            }
-            rs.close();
-
-        } catch (Exception e) {
-            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
-
+                while (rs.next()) 
+                {
+                    ejecuto= false;
+                }
+                rs.close();
+                
         }
-        return iniciarSesion;
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+          
+        }
+        return ejecuto;
     }
+    String tipo;
+     public boolean iniciarSesion(String arreglo[])
+   {
+       boolean iniciar = false;
+       ResultSet rs = null;
+       Statement cmd = null;
+       try {
+                cmd = con.createStatement();
+                rs = cmd.executeQuery("SELECT * FROM `usuarios` WHERE nombreUsuario='"+arreglo[0]+"' AND contrasenna='"+arreglo[1]+"' ");
+                while (rs.next()) 
+                {
+                    tipo=rs.getString("tipo");
+                    iniciar= true;
+                }
+                rs.close();
+                
+        }
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+        }
+       
+       return iniciar;
+   }
+     
+     public String devolverTipo()
+     {
+         return tipo;
+     }
+    
 }

@@ -47,7 +47,7 @@ public class ArchivosXMLUsuarios
     Result console;
     Transformer transformer;
     String nombreArchivo;
-    
+    boolean existe=false;
     public ArchivosXMLUsuarios(FRM_MantenimientoUsuarios ventana) 
     {
         this.ventana=ventana;  
@@ -55,7 +55,7 @@ public class ArchivosXMLUsuarios
         
         if(cargarXML())
         {
-            
+            existe=true;
         }
         else
         {
@@ -66,6 +66,8 @@ public class ArchivosXMLUsuarios
         titulos = new ArrayList();
         valores = new ArrayList();
     }
+    
+    
     public void crearXML() //Método nuevo en pruebas
     {
         factory = DocumentBuilderFactory.newInstance();
@@ -286,4 +288,72 @@ public class ArchivosXMLUsuarios
             System.err.println("Error al eliminar: " + e);
         }
     }
-}
+    
+    public boolean getExiste()
+    {
+        return existe;
+    }
+    
+    public boolean IniciarSesion(String arreglo[])
+    {
+        boolean iniciar=false;
+        
+        Element raiz = document.getDocumentElement();
+         NodeList listaDeItems = raiz.getElementsByTagName("Usuario");
+         Node tag=null,datoContenido=null;
+
+         boolean cedula=false, contrasenna = false, tituloCedula=false;
+         int contador1=0;
+         int contador2=0;
+         
+            for(int contadorItems=0; contadorItems<listaDeItems.getLength(); contadorItems++) 
+            {   
+                Node item = listaDeItems.item(contadorItems);
+                NodeList datosItem = item.getChildNodes();
+                for(int contadorTags=0; contadorTags<datosItem.getLength(); contadorTags++) 
+                {           
+                    tag = datosItem.item(contadorTags); 
+                    datoContenido = tag.getFirstChild();
+
+                    if(tag.getNodeName().equals("cedula") && datoContenido.getNodeValue().equals(""+arreglo[0]) )
+                    {
+                       cedula=true;     
+                    }
+                    if(cedula && contador1<20)
+                    {
+
+                        contador1++;
+                    }
+                }
+            }
+            
+            for(int contadorItems=0; contadorItems<listaDeItems.getLength(); contadorItems++) 
+            {   
+                Node item = listaDeItems.item(contadorItems);
+                NodeList datosItem = item.getChildNodes();
+                for(int contadorTags=0; contadorTags<datosItem.getLength(); contadorTags++) 
+                {           
+                    tag = datosItem.item(contadorTags); 
+                    datoContenido = tag.getFirstChild();
+
+                    if(tag.getNodeName().equals("contrasenna") && datoContenido.getNodeValue().equals(""+arreglo[1]) )
+                    {
+                       contrasenna=true;     
+                    }
+                    if(contrasenna && contador2<10)
+                    {
+
+                        contador2++;
+                    }
+                    
+                }
+
+            }
+            if(cedula==true&&contrasenna==true)
+            iniciar=true;
+            
+            return iniciar;
+         }
+
+    }
+    

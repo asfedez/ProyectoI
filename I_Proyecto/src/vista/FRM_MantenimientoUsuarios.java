@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
 
-    Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios;
+    public Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios;
     public FRM_MantenimientoUsuarios() {
         initComponents();
         inicializarGUI();
