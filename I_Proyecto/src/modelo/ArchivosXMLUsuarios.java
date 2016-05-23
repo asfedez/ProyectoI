@@ -48,6 +48,7 @@ public class ArchivosXMLUsuarios
     Transformer transformer;
     String nombreArchivo;
     boolean existe=false;
+    int contador=0;
     public ArchivosXMLUsuarios(FRM_MantenimientoUsuarios ventana) 
     {
         this.ventana=ventana;  
@@ -55,7 +56,7 @@ public class ArchivosXMLUsuarios
         
         if(cargarXML())
         {
-            existe=true;
+            
         }
         else
         {
@@ -111,6 +112,7 @@ public class ArchivosXMLUsuarios
         }
         return cargo;
     } 
+   
     public void guardarEnXML(String arregloInformacion[])//Método nuevo en pruebas
     {
         try{
@@ -147,12 +149,18 @@ public class ArchivosXMLUsuarios
             transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(source, result);
             transformer.transform(source, console);
+            contador++;
             
             }
         catch (Exception e) 
         {
             System.err.println("Error al guardar: " + e);
         }
+    }
+    
+    public int devolverContador()
+    {
+        return contador;
     }
     public void crearArchivo(String nombreArchivo) 
     {
@@ -315,7 +323,7 @@ public class ArchivosXMLUsuarios
                     tag = datosItem.item(contadorTags); 
                     datoContenido = tag.getFirstChild();
 
-                    if(tag.getNodeName().equals("cedula") && datoContenido.getNodeValue().equals(""+arreglo[0]) )
+                    if(tag.getNodeName().equals("nombreUsuario") && datoContenido.getNodeValue().equals(""+arreglo[0]) )
                     {
                        cedula=true;     
                     }

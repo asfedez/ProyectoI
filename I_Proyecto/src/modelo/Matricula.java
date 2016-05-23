@@ -22,7 +22,7 @@ public class Matricula implements Serializable
         this.codigo = codigo;
         this.sigla = siglas;
         this.cedula = cedula;
-        this.estado=estado;
+        setEstado(estado);
     }
 
     /**

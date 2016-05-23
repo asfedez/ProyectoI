@@ -27,7 +27,7 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
     ConexionBD conexionBD;
     String opcion;
     boolean creado=false;
-    
+    int contadorDeXML=0;
     public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frm_MantenimientoUsuarios)
     {
         this.frm_MantenimientoUsuarios = frm_MantenimientoUsuarios;
@@ -214,6 +214,8 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
             } 
         }
     }
+    
+   
     
       ///******Archivos planos*****/////////
     public void crearArchivo()

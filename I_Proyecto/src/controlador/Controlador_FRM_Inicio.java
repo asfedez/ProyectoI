@@ -60,7 +60,7 @@ public class Controlador_FRM_Inicio implements ItemListener, ActionListener{
          }
          if(evento.getActionCommand().equalsIgnoreCase("Cancelar"))
          {
-             System.exit(0);
+             frm_Login.hide();
          }
     }
     

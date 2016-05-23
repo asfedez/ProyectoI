@@ -241,11 +241,66 @@ public class ArchivoXMLMatricula
             System.err.println("Error al modificar: " + e);
         }
     }
+    
+    public boolean verificarInformacion(String arreglo[])
+    {
+        Element raiz = document.getDocumentElement();
+         NodeList listaDeItems = raiz.getElementsByTagName("Matricula");
+         Node tag=null,datoContenido=null;
+
+         boolean itemCodigo=false,itemSigla=false,tituloCedula=false;
+         int contador=0;
+         int contador1=0;
+
+         for(int contadorItems=0; contadorItems<listaDeItems.getLength(); contadorItems++) 
+         {   
+             Node item = listaDeItems.item(contadorItems);
+             NodeList datosItem = item.getChildNodes();
+             for(int contadorTags=0; contadorTags<datosItem.getLength(); contadorTags++) 
+             {           
+                 tag = datosItem.item(contadorTags); 
+                 datoContenido = tag.getFirstChild();
+
+                 if(tag.getNodeName().equals("codigo") && datoContenido.getNodeValue().equals(""+arreglo[0]) )
+                 {
+                    
+                    itemCodigo=true;     
+                 }
+                 if(itemCodigo && contador<3)
+                 {
+                    contador++;
+                 }
+             }
+         }
+         
+         for(int contadorItems=0; contadorItems<listaDeItems.getLength(); contadorItems++) 
+         {   
+             Node item = listaDeItems.item(contadorItems);
+             NodeList datosItem = item.getChildNodes();
+             for(int contadorTags=0; contadorTags<datosItem.getLength(); contadorTags++) 
+             {           
+                 tag = datosItem.item(contadorTags); 
+                 datoContenido = tag.getFirstChild();
+
+                 if(tag.getNodeName().equals("sigla") && datoContenido.getNodeValue().equals(""+arreglo[1]) )
+                 {
+                    
+                    itemSigla=true;     
+                 }
+                 if(itemSigla && contador<3)
+                 {
+                    contador++;
+                 }
+             }
+         }
+         return itemSigla;
+    }
+    
+    
     public void eliminarInformacionDelXml(String arreglo[])
     { 
          Element raiz = document.getDocumentElement();
-         NodeList listaDeItems = raiz.getElementsByTagName("codigo");
-         NodeList listaDeItems2 = raiz.getElementsByTagName("sigla");
+         NodeList listaDeItems = raiz.getElementsByTagName("Matricula");
          Node tag=null,datoContenido=null;
          String arregloInformacion[]=new String[3];
          boolean itemEncontrado=false,tituloCedula=false;
@@ -260,7 +315,7 @@ public class ArchivoXMLMatricula
                     tag = datosItem.item(contadorTags); 
                     datoContenido = tag.getFirstChild();
                     if((tag.getNodeName().equals("codigo") && datoContenido.getNodeValue().equals(""+arreglo[0]))&&
-                            (tag.getNodeName().equals("sigla")&&datoContenido.getNodeValue().equals(""+arreglo[1])))
+                            (tag.getNodeName().equals("codigo") && datoContenido.getNodeValue().equals(""+arreglo[0])))
                     {
                        itemEncontrado=true;
                        raiz.removeChild(item);
@@ -271,10 +326,6 @@ public class ArchivoXMLMatricula
                        transformer.transform(source, result);
                        transformer.transform(source, console);
                     } 
-                    else
-                    {
-                        System.err.println("error en eliminar");
-                    }
                 }
             }
          }

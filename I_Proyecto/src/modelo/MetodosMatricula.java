@@ -13,7 +13,7 @@ public class MetodosMatricula {
     MetodosEstudiantes metodosEstudiantes;
     FRM_MantenimientoMatricula frm_MantenimientoMatricula;
 
-    boolean estado;
+    boolean estado=true;
     
     public MetodosMatricula(MetodosEstudiantes metodosEstudiantes,MetodosCursos metodosCursos,FRM_MantenimientoMatricula frm_MantenimientoMatricula)
     {
@@ -25,7 +25,7 @@ public class MetodosMatricula {
     }
     public void agregarMatricula(String informacion[])
     {
-        Matricula temporal=new Matricula(informacion[0], informacion[1], informacion[2], true);
+        Matricula temporal=new Matricula(informacion[0], informacion[1], informacion[2], estado);
         listaDeMatriculas.add(temporal);   
     }
     
@@ -36,7 +36,7 @@ public class MetodosMatricula {
         
         for(int contador=0;contador<listaDeMatriculas.size();contador++)
         {
-            if(listaDeMatriculas.get(contador).getCodigo().equals(codigo)&&listaDeMatriculas.get(contador).getEstado())
+            if(listaDeMatriculas.get(contador).getCodigo().equals(codigo)&&listaDeMatriculas.get(contador).getEstado()==true)
             {
                 arregloInformacionConsultada[0]=codigo;
                 arregloInformacionConsultada[1]=listaDeMatriculas.get(contador).getCedula();

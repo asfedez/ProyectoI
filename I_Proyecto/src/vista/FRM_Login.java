@@ -44,8 +44,6 @@ public class FRM_Login extends javax.swing.JFrame {
         btnIniciar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setText("Usuario");
 
         jLabel2.setText("Contraseña");
